@@ -1,33 +1,46 @@
-import React from "react";
-import supabase from '../utils/supabase'
+import { supabase } from '../utils/supabase'; // Assuming supabase is correctly imported
+import React, { useState } from 'react';
 
-const Login =()=>{
-    console.log(supabase)
+const Login = () => {
+  const [user, setUser] = useState(null); // State to store user information
 
-    const login =async()=>{
-
-        await supabase.auth.signInWithOAuth({
-            provider:"kakao"
-        })
-
+  const logInWithKakao = async () => {
+    try {
+      const { user: authUser, error } = await supabase.auth.signInWithOAuth({
+        provider: 'kakao',
+      });
+      if (error) {
+        throw error.message;
+      }
+      setUser(authUser); // Set user information to state on successful login
+    } catch (error) {
+      console.error('Kakao login error:', error);
+      // Handle error (e.g., show error message to user)
     }
+  };
+
+  const logInWithGmail = async () => {
+    try {
+      const { user: authUser, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+      });
+      if (error) {
+        throw error.message;
+      }
+      setUser(authUser); // Set user information to state on successful login
+    } catch (error) {
+      console.error('Gmail login error:', error);
+      // Handle error (e.g., show error message to user)
+    }
+  };
+
+
   return (
     <>
-   
-     <div>
-       <div><button>googleで　Login</button></div>
-       <div> <button onClick={login}>kakaoでLogin</button></div>
-
-    <p>email:</p><input placeholder=' email'></input>
-    
-    </div>
-      
-      <p>password:</p><input placeholder='password 入力  '></input>
-      <button>Login</button>
-   
+     <button onClick={logInWithKakao}>Kakao로 로그인</button>
+    <button onClick={logInWithGmail}>G-mail로 로그인</button>
     </>
-  )
-
-}
+  );
+};
 
 export default Login;
