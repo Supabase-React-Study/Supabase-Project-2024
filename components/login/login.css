@@ -1,0 +1,22 @@
+/* ----------------------------- */
+input::placeholder {
+    color: #D9D9D9;
+}
+
+textarea::placeholder {
+    color: #D9D9D9;
+}
+
+body {
+    /* Body Base */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+color: #1E1E1E;
+}
+
+/* ----------------------------- */
