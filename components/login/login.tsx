@@ -1,4 +1,6 @@
-export default function LoginPage() {
+import React from 'react';
+
+export default function Login() {
     return (
       
       <form>
@@ -6,7 +8,7 @@ export default function LoginPage() {
         <input id="email" name="email" type="email" required />
         <label htmlFor="password">パスワード</label>
         <input id="password" name="password" type="password" required />
-        <button formAction={login}>Log in</button>
+        <button formAction={Login}>Log in</button>
       </form>
     )
   }
