@@ -17,7 +17,8 @@ export default function Login() {
                     <input placeholder="" type="password" id="password"></input>
                 </div>
                 <div class="btns">
-                    <button id="ch-password" name="ch-password" value="login">ログイン</button>
+                    
+                    <button id="login" name="login" value="login">ログイン</button>
                 </div>
             </form>
         </section>
