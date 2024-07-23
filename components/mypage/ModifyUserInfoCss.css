@@ -28,26 +28,17 @@ body {
     box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
     cursor: pointer;
 }
-
 /* ----------------------------- */
 
-.mypage-header {
-    width: 213px;
-    height: 160.4px;
 
+.modify-header {
+    width: 213px;
     margin: 250px auto;
     margin-bottom: 40px;
     text-align: center;
 }
 
-.mypage-header>img {
-    width: 50px;
-    height: 50px;
-
-    margin: 20px 0;
-}
-
-.user-info {
+.user-info-modify {
     margin: 0 auto;
 
     /* Form Register */
