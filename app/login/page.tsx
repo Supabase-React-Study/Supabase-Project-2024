@@ -6,6 +6,7 @@ export default function LoginPage() {
       <div>
         <h2> Login </h2>
         <SocialLogin/></div>
+   
       <div><form>
           <label htmlFor="email">Email:</label>
           <input id="s" name="email" type="email" required />
