@@ -1,4 +1,4 @@
-import LoginCss from "./loginCss.css";
+import LoginCss from "./LoginCss.css";
 
 
 export default function Login() {
