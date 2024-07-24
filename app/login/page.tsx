@@ -2,7 +2,7 @@ import { login, signup } from './actions'
 import SocialLogin  from '../../components/SocailLogins/SocialLogin'
 export default function LoginPage() {
   return (
-      <>
+    <div>
       <div>
         <h2> Login </h2>
         <SocialLogin/></div>
@@ -16,7 +16,6 @@ export default function LoginPage() {
           <button formAction={signup}>Sign up</button>
         </form>
       </div>
-    </>
-  
+    </div>
   )
 }
