@@ -22,7 +22,7 @@ export default function SignUp() {
                 </div>
                 <div className="nickn">
                     <div>ニックネーム</div>
-                    <input type="nickn" id="nickn"></input>
+                    <input placeholder="abcde" type="nickn" id="nickn"></input>
                 </div>
                 <div className="sex">
                     <div>性別
