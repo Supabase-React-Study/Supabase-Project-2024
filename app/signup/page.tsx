@@ -1,5 +1,5 @@
 import SignUp from '../../components/singup/SignUp'
-// import { login, signup } from './actions'
+import { signup } from './actions'
 
 export default function SignUpPage() {
   return (
