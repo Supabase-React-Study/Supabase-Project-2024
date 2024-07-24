@@ -31,9 +31,9 @@ body {
 
 /* ----------------------------- */
 
-.login-header {
+.signup-header {
     width: 213px;
-    height: 20.4px;
+    height: 160.4px;
 
     margin: 250px auto;
     margin-bottom: 40px;
@@ -100,6 +100,21 @@ body {
     border: 1px solid #D9D9D9;
     border-radius: 8px;
 }
+.check-pw>input {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    margin-top: 5px;
+
+    width: 320px;
+    height: 10px;
+
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+}
 
 .nickn>input {
     display: flex;
@@ -129,7 +144,7 @@ body {
     margin-left: 100px;
 }
 
-.btns>button {
+.btns>button{
     /* Button */
     box-sizing: border-box;
 
