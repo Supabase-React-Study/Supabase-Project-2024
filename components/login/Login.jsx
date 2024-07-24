@@ -14,7 +14,7 @@ export default function Login() {
                 </div>
                 <div className="password">
                     <div>パスワード</div>
-                    <input placeholder="" type="password" id="password"></input>
+                    <input type="password" id="password"></input>
                 </div>
                 <div className="btns">
                     

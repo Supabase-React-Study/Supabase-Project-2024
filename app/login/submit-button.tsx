@@ -3,9 +3,11 @@
 import { useFormStatus } from "react-dom";
 import { type ComponentProps } from "react";
 
-type Props = ComponentProps<"button"> & {
+type Props = Omit<ComponentProps<"button">, "formAction"> & {
+  formAction?: string;
   pendingText?: string;
 };
+
 
 export function SubmitButton({ children, pendingText, ...props }: Props) {
   const { pending, action } = useFormStatus();
