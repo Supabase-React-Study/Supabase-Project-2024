@@ -17,6 +17,7 @@ export default function SocialLogin() {
     try {
       const { user: authUser, error } = await supabase.auth.signInWithOAuth({
         provider: provider,
+        redirectTo:"http://localhost:3000/"
       });
       if (error) {
         throw error;
