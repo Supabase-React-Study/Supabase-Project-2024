@@ -1,14 +1,25 @@
 import { redirect } from 'next/navigation'
 
 import { createClient } from '@/utils/supabase/server'
+import AuthButton from "@/components/AuthButton";
+
 
 export default async function PrivatePage() {
   const supabase = createClient()
 
-  const { data, error } = await supabase.auth.getUser()
-  if (error || !data?.user) {
-    redirect('/login')
+ 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return redirect("/login");
   }
 
-  return <p>Hello {data.user.email}</p>
+
+  return (
+    <div>
+      <AuthButton />
+    </div>
+  )
 }
