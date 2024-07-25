@@ -1,7 +1,12 @@
 import LoginCss from './LoginCss.css'
 import React from 'react';
+// import login from '../../app/login/actions'
 
 export default function Login() {
+    async function login() {
+        'use server';
+        // ...
+      }
     return (
         <section>
             <header className="login-header">
@@ -18,7 +23,8 @@ export default function Login() {
                 </div>
                 <div className="btns">
                     
-                    <button formAction={Login} >ログイン</button>
+                    <button formAction={login} >ログイン</button>
+                    
                 </div>
             </form>
         </section>

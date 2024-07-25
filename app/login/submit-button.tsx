@@ -2,13 +2,15 @@
 
 import { useFormStatus } from "react-dom";
 import { type ComponentProps } from "react";
+import { login } from "./actions";
+
 
 type Props = Omit<ComponentProps<"button">, "formAction"> & {
   formAction?: string;
   pendingText?: string;
 };
 
-
+//입력중일때 제출 불가, 입력 완료 후 제출
 export function SubmitButton({ children, pendingText, ...props }: Props) {
   const { pending, action } = useFormStatus();
 
@@ -20,3 +22,4 @@ export function SubmitButton({ children, pendingText, ...props }: Props) {
     </button>
   );
 }
+
