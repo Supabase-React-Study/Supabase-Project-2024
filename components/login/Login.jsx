@@ -1,4 +1,4 @@
-import LoginCss from "./LoginCss.css";
+import LoginCss from './LoginCss.css'
 import React from 'react';
 
 export default function Login() {
@@ -18,7 +18,7 @@ export default function Login() {
                 </div>
                 <div className="btns">
                     
-                    <button formAction={Login}>ログイン</button>
+                    <button formAction={Login} >ログイン</button>
                 </div>
             </form>
         </section>
