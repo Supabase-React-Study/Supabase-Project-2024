@@ -5,6 +5,7 @@ import { createClient } from '@supabase/supabase-js'
 import { redirect } from 'next/navigation'
 
 
+
 // import SocialLogin  from '../../components/SocailLogins/SocialLogin'
 export default function LoginPage() {
  

@@ -17,9 +17,11 @@ export async function login(formData: FormData) {
 
   if (error) {
     redirect("/login?message=Could not authenticate user");
-  } else {
+  } 
+  
+    revalidatePath('/','layout')
     redirect("/protected");
-  }
+  
 }
 
 

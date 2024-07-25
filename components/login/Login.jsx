@@ -2,7 +2,7 @@
 import LoginCss from './LoginCss.css'
 import React from 'react';
 import { createClient } from '@/utils/supabase/server'
-import { redirect } from 'next/navigation';
+
 import { SubmitButton } from "@/app/login/submit-button";
 import { login } from '@/app/login/actions'
 
@@ -25,6 +25,8 @@ export default function Login() {
                     <div>パスワード</div>
                     <input placeholder="••••••••" type="password" id="password"></input>
                 </div>
+               
+                
                 <div className="btns">
                     
                     <button formAction={login}>ログイン</button>
