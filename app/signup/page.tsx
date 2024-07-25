@@ -1,6 +1,7 @@
-import { login, signup } from './actions'
+
+
 import SocialLogin  from '../../components/SocailLogins/SocialLogin'
-import Login  from '../../components/login/Login'
+import SignUp  from '../../components/singup/SignUp'
 
 const centerContainerStyle = {
   display: 'flex',
@@ -21,9 +22,8 @@ const componentWrapperStyle = {
   margin: '0 20px', // 좌우 여백을 10px로 설정합니다.
 };
 
-export default function LoginPage() {
+export default function SignUPPage() {
   return (
-
     <div style={centerContainerStyle}>
       <div style={contentStyle}>
         <div style={componentWrapperStyle}>
@@ -31,10 +31,9 @@ export default function LoginPage() {
           <SocialLogin />
         </div>
         <div style={componentWrapperStyle}>
-          <Login />
+          <SignUp />
         </div>
       </div>
     </div>
-
   );
 }

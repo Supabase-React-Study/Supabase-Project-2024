@@ -1,3 +1,5 @@
+"use client";
+import React from 'react';
 import SignupCss from './SignupCss.css'
 
 
@@ -14,27 +16,27 @@ export default function SignUp() {
                 </div>
                 <div className="password">
                     <div>パスワード</div>
-                    <input type="password" id="password"></input>
+                    <input type="password" id="password"/>
                 </div>
                 <div className="check-pw">
                     <div>パスワード確認</div>
-                    <input type="check-pw" id="check-pw"></input>
+                    <input type="check-pw" id="check-pw"/>
                 </div>
                 <div className="nickn">
                     <div>ニックネーム</div>
-                    <input placeholder="abcde" type="nickn" id="nickn"></input>
+                    <input placeholder="abcde" type="nickn" id="nickn"/>
                 </div>
                 <div className="sex">
-                    <div>性別
-                    <input type="radio" id="sex">男</input>
-                    <input type="radio" id="sex">女</input>
-                    <input type="radio" id="sex">その他</input>
+                    <div>性別</div>
+                    <div class="select-sex">
+                        <input type="radio" id="sex" value="man"/>男
+                        <input type="radio" id="sex" value="woman"/>女
+                        <input type="radio" id="sex" value="etc"/>その他
                     </div>
                 </div>
                 <div className="agree">
-                    <input type="checkbox" id="agree">
+                    <input type="checkbox" id="agree"/>
                     利用規約および個人情報の取扱いについてに同意する。
-                    </input>
                 </div>
                 <div className="btns">
                     <button id="signup" name="signup" value="signup">登録</button>

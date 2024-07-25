@@ -1,3 +1,5 @@
+
+"use client";
 import LoginCss from './LoginCss.css'
 import React from 'react';
 import {login} from '@/app/login/actions'
