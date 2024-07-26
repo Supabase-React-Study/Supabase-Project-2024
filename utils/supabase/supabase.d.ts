@@ -6,11 +6,14 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
+// Database 타입 정의
 export type Database = {
   public: {
     Tables: {
+      // userinfo 테이블 정의
       userinfo: {
         Row: {
+          // Row 타입 정의
           created_at: string
           email: string
           gender: string | null
@@ -21,6 +24,7 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          // Insert 타입 정의
           created_at: string
           email: string
           gender?: string | null
@@ -31,6 +35,7 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          // Update 타입 정의
           created_at?: string
           email?: string
           gender?: string | null
@@ -42,6 +47,7 @@ export type Database = {
         }
         Relationships: [
           {
+            // 관계 정의
             foreignKeyName: "userinfo_id_fkey"
             columns: ["id"]
             isOneToOne: true
@@ -66,8 +72,10 @@ export type Database = {
   }
 }
 
+// PublicSchema 타입 정의
 type PublicSchema = Database[Extract<keyof Database, "public">]
 
+// Tables 타입 정의
 export type Tables<
   PublicTableNameOrOptions extends
     | keyof (PublicSchema["Tables"] & PublicSchema["Views"])
@@ -93,6 +101,7 @@ export type Tables<
       : never
     : never
 
+// TablesInsert 타입 정의
 export type TablesInsert<
   PublicTableNameOrOptions extends
     | keyof PublicSchema["Tables"]
@@ -114,6 +123,7 @@ export type TablesInsert<
       : never
     : never
 
+// TablesUpdate 타입 정의
 export type TablesUpdate<
   PublicTableNameOrOptions extends
     | keyof PublicSchema["Tables"]
@@ -135,6 +145,7 @@ export type TablesUpdate<
       : never
     : never
 
+// Enums 타입 정의
 export type Enums<
   PublicEnumNameOrOptions extends
     | keyof PublicSchema["Enums"]

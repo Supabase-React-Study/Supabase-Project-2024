@@ -1,0 +1,29 @@
+input::placeholder {
+    color: #D9D9D9;
+}
+
+textarea::placeholder {
+    color: #D9D9D9;
+}
+
+body {
+    /* Body Base */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+
+    color: #1E1E1E;
+}
+
+[type="radio"]:focus-visible {
+    outline: max(2px, 0.1em) dotted rgb(211, 211, 211);
+    outline-offset: max(2px, 0.1em);
+}
+
+[type="radio"]:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+    cursor: pointer;
+}

@@ -1,0 +1,131 @@
+/* ----------------------------- */
+input::placeholder {
+    color: #D9D9D9;
+}
+
+textarea::placeholder {
+    color: #D9D9D9;
+}
+
+body {
+    /* Body Base */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+
+    color: #1E1E1E;
+}
+
+[type="radio"]:focus-visible {
+    outline: max(2px, 0.1em) dotted rgb(211, 211, 211);
+    outline-offset: max(2px, 0.1em);
+}
+
+[type="radio"]:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+    cursor: pointer;
+}
+/* ----------------------------- */
+
+
+.modify-header {
+    width: 213px;
+    margin: 250px auto;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.user-info-modify {
+    margin: 0 auto;
+
+    /* Form Register */
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 30px;
+
+    width: 416px;
+    min-width: 320px;
+    height: 327px;
+
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+}
+
+.mail-addr>input {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    margin-top: 5px;
+
+    width: 320px;
+    height: 10px;
+
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.nickn>input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    margin-top: 5px;
+
+    width: 320px;
+    height: 10px;
+
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+}
+
+.sex {
+    display: flex;
+    width: 100%;
+}
+
+.select-sex>input {
+    margin: 0 15px;
+}
+
+.select-sex {
+    margin-left: 100px;
+}
+
+.btns>button {
+    /* Button */
+    box-sizing: border-box;
+
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-right: 5px;
+
+    width: 178px;
+    height: 40px;
+
+    background: #2C2C2C;
+    border: 1px solid #2C2C2C;
+    border-radius: 8px;
+    color: #fafafa;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
