@@ -1,9 +1,8 @@
 
 import React from 'react';
 import SignupCss from './SignupCss.css'
-import { signup } from '@/app/login/actions'
-import { SubmitButton } from "@/app/login/submit-button"
-
+import { signup } from '@/app/login/actions';
+import { SubmitButton } from "@/app/login/submit-button";
 
 export default function SignUp() {
     return (
@@ -22,7 +21,7 @@ export default function SignUp() {
                 </div>
                 <div className="check-pw">
                     <div>パスワード確認</div>
-                    <input placeholder="••••••••" type="check-pw" name="check-pw"/>
+                    <input placeholder="••••••••" type="password" id="check-pw"/>
                 </div>
                 <div className="nickn">
                     <div>ニックネーム</div>
@@ -31,13 +30,13 @@ export default function SignUp() {
                 <div className="sex">
                     <div>性別</div>
                     <div class="select-sex">
-                    <input type="radio" name="man" name="sex" value="man" /><label for="男">男</label>
-                        <input type="radio" name="woman" name="sex" value="woman" /><label for="女">女</label>
-                        <input type="radio" name="etc" name="sex" value="etc" /><label for="その他">その他</label>
+                    <input type="radio" id="man" name="sex" value="man"/><label for="男">男</label>
+                        <input type="radio" id="woman" name="sex" value="woman"/><label for="女">女</label>
+                        <input type="radio" id="etc" name="sex" value="etc"/><label for="その他">その他</label>
                     </div>
                 </div>
                 <div className="agree">
-                    <input type="checkbox" name="agree"/>
+                    <input type="checkbox" id="agree"/>
                     利用規約および個人情報の取扱いについてに同意する。
                 </div>
                 <div className="btns">

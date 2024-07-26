@@ -22,7 +22,7 @@ export default function Login() {
                     <input placeholder="••••••••" type="password" name="password"></input>
                 </div>
                 <div className="btns">
-                    <SubmitButton formAction={login}>ログイン</SubmitButton>
+                    <SubmitButton formAction={login}>ログイン</SubmitButton> 
                     <a href='/signup'>新規登録</a>
                 </div>
                 
