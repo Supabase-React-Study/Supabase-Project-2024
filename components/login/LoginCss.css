@@ -122,15 +122,15 @@
 
     
     text-align: center;
-    text-decoration: none; /* Remove underline from link */
-    display: flex; /* Flex display for both elements */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btns>a:hover,
 .btns>button:hover {
-    background: #3c3c3c; /* Add hover effect */
+    background: #3c3c3c;
     cursor: pointer;
 }
 

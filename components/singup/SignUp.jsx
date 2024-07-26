@@ -30,15 +30,16 @@ export default function SignUp() {
                 <div className="sex">
                     <div>性別</div>
                     <div class="select-sex">
-                    <input type="radio" id="man" name="sex" value="man"/><label for="男">男</label>
-                        <input type="radio" id="woman" name="sex" value="woman"/><label for="女">女</label>
-                        <input type="radio" id="etc" name="sex" value="etc"/><label for="その他">その他</label>
+                    <input type="radio"  name="man" value="man"/><label for="男">男</label>
+                        <input type="radio"  name="woman" value="woman"/><label for="女">女</label>
+                        <input type="radio" name="etc" value="etc"/><label for="その他">その他</label>
                     </div>
                 </div>
                 <div className="agree">
                     <input type="checkbox" id="agree"/>
                     利用規約および個人情報の取扱いについてに同意する。
                 </div>
+
                 <div className="btns">
                     <SubmitButton formAction={signup}>登録</SubmitButton>
                 </div>
