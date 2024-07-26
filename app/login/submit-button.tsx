@@ -2,8 +2,6 @@
 
 import { useFormStatus } from "react-dom";
 import { type ComponentProps } from "react";
-import { login } from "./actions";
-
 
 type Props = ComponentProps<"button"> & {
   pendingText?: string;
@@ -20,4 +18,3 @@ export function SubmitButton({ children, pendingText, ...props }: Props) {
     </button>
   );
 }
-
