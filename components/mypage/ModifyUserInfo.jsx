@@ -7,7 +7,7 @@ export default function UserInfoModify() {
                 <h2>私の情報 修正</h2>
             </header>
 
-            <form class="user-info-modify">
+            <form className="user-info-modify">
                 <div className="mail-addr">
                     <div>メールアドレス</div>
                     <input placeholder="(유저 이메일 정보)" readonly />
@@ -18,7 +18,7 @@ export default function UserInfoModify() {
                 </div>
                 <div className="sex">
                     <div>性別</div>
-                    <div class="select-sex">
+                    <div className="select-sex">
                         <input type="radio" id="man" name="sex" value="man" /><label for="男">男</label>
                         <input type="radio" id="woman" name="sex" value="woman" /><label for="女">女</label>
                         <input type="radio" id="etc" name="sex" value="etc" /><label for="その他">その他</label>
