@@ -27,7 +27,7 @@ export default function SocialLogin() {
       if (error) {
         throw error;
       }
-      setUser(authUser); // 로그인 성공 시 사용자 정보를 상태에 설정
+     
     } catch (error) {
       console.error(`${provider} login error:`, error);
       // 에러 처리 (예: 사용자에게 에러 메시지 표시)
@@ -36,14 +36,7 @@ export default function SocialLogin() {
 
   return (
     <>
-      <Script
-        src="https://accounts.google.com/gsi/client"
-        strategy="beforeInteractive" // 이 전략을 사용하여 페이지가 로드되기 전에 스크립트를 로드
-      />
-   
-
-      <div id="g_id_button"></div>
-
+      
       <div>
         <Image
           src={KakaoButton}
