@@ -16,11 +16,11 @@ export default function SignUp() {
                 </div>
                 <div className="password">
                     <div>パスワード</div>
-                    <input type="password" id="password"/>
+                    <input placeholder="••••••••" type="password" id="password"/>
                 </div>
                 <div className="check-pw">
                     <div>パスワード確認</div>
-                    <input type="check-pw" id="check-pw"/>
+                    <input placeholder="••••••••" type="check-pw" id="check-pw"/>
                 </div>
                 <div className="nickn">
                     <div>ニックネーム</div>
@@ -29,9 +29,9 @@ export default function SignUp() {
                 <div className="sex">
                     <div>性別</div>
                     <div class="select-sex">
-                        <input type="radio" id="sex" value="man"/>男
-                        <input type="radio" id="sex" value="woman"/>女
-                        <input type="radio" id="sex" value="etc"/>その他
+                    <input type="radio" id="man" name="sex" value="man" /><label for="男">男</label>
+                        <input type="radio" id="woman" name="sex" value="woman" /><label for="女">女</label>
+                        <input type="radio" id="etc" name="sex" value="etc" /><label for="その他">その他</label>
                     </div>
                 </div>
                 <div className="agree">

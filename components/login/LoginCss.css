@@ -97,8 +97,14 @@
     margin-left: 100px;
 }
 
-.btns>button {
+.btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btns>button,.btns>a {
     /* Button */
+    text-decoration: none;
     box-sizing: border-box;
 
     justify-content: center;
@@ -114,8 +120,20 @@
     border-radius: 8px;
     color: #fafafa;
 
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 1;
+    
+    text-align: center;
+    text-decoration: none; /* Remove underline from link */
+    display: flex; /* Flex display for both elements */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
 }
+
+.btns>a:hover,
+.btns>button:hover {
+    background: #3c3c3c; /* Add hover effect */
+    cursor: pointer;
+}
+
+
+
+
