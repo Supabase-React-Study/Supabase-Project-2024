@@ -8,9 +8,15 @@ import { createClient } from '@/utils/supabase/client'
 import { redirect } from "next/dist/server/api-utils";
 
 
-export default function MyPage() {
+export default async function MyPage() {
 
     const supabase = createClient();
+
+    const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+    console.log(user);
 
     const resetPwEmail = async () => {
         alert("supabase 연동");
@@ -32,7 +38,7 @@ export default function MyPage() {
             <form className="user-info">
                 <div className="mail-addr">
                     <div>メールアドレス</div>
-                    <input placeholder="abcde@gmail.com" id="email" />
+                    <input placeholder={user.email} id="email" />
                 </div>
                 <div className="nickn">
                     <div>ニックネーム</div>
