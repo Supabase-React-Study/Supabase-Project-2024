@@ -1,36 +1,57 @@
+'use client'
+
 import MyPageCss from "./MyPageCss.css";
 import MemberImg from "./member.png";
 
+import React, { useEffect } from 'react';
+import { createClient } from '@/utils/supabase/client'
+import { redirect } from "next/dist/server/api-utils";
+
+
 export default function MyPage() {
+
+    const supabase = createClient();
+
+    const resetPwEmail = async () => {
+        alert("supabase 연동");
+
+        const { data, error } = await supabase.auth
+            .resetPasswordForEmail('n0rkjdx0@gmail.com', {
+                redirectTo: `http://localhost:3000/modifypassword`
+            })
+
+        redirect("http://localhost:3000/mailpage");
+    }
+
     return (
         <section>
-            <header class="mypage-header">
+            <header className="mypage-header">
                 <h2>マイページ</h2>
-                <img class="fit-picture" src="https://www.pngall.com/wp-content/uploads/10/Member-Silhouette-Transparent.png" alt="member-default-profile-img" />
+                <img className="fit-picture" src="https://www.pngall.com/wp-content/uploads/10/Member-Silhouette-Transparent.png" alt="member-default-profile-img" />
             </header>
-            <form class="user-info">
-                <div class="mail-addr">
+            <form className="user-info">
+                <div className="mail-addr">
                     <div>メールアドレス</div>
-                    <input placeholder="abcde@gmail.com" id="email"/>
+                    <input placeholder="abcde@gmail.com" id="email" />
                 </div>
-                <div class="nickn">
+                <div className="nickn">
                     <div>ニックネーム</div>
                     <input placeholder="abcde"></input>
                 </div>
-                <div class="sex">
+                <div className="sex">
                     <div>性別</div>
-                    <div class="select-sex">
-                        <input type="radio" id="man" name="sex" value="man"/><label for="男">男</label>
-                        <input type="radio" id="woman" name="sex" value="woman"/><label for="女">女</label>
-                        <input type="radio" id="etc" name="sex" value="etc"/><label for="その他">その他</label>
+                    <div className="select-sex">
+                        <input type="radio" id="man" name="sex" value="man" /><label for="男">男</label>
+                        <input type="radio" id="woman" name="sex" value="woman" /><label for="女">女</label>
+                        <input type="radio" id="etc" name="sex" value="etc" /><label for="その他">その他</label>
                     </div>
                 </div>
-                <div class="btns">
-                    <button id="ch-password" name="ch-password" value="パスワード 変更">パスワード 変更</button>
-                    <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
-                </div>
-            </form>
-        </section>
+                <div className="btns">
+                    <button id="ch-password" name="ch-password" value="パスワード 変更" onClick={() => resetPwEmail()}> パスワード 変更</button>
+                <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
+            </div>
+        </form>
+        </section >
 
     );
 }
