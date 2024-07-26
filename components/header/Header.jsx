@@ -11,7 +11,7 @@ const Header = () => {
       <Link href="/login">
         {/* 클릭 가능한 요소로는 <a> 태그를 사용하지 않고, 그냥 div 등의 컨테이너 요소를 사용 */}
         <div style={{ cursor: 'pointer' }}>
-          <Image src={logo} alt="Logo" width={150} />
+          <Image src={logo} alt="Logo" width={250} />
         </div>
       </Link>
     </div>
