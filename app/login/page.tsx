@@ -1,6 +1,6 @@
 import { login, signup } from './actions'
-import SocialLogin  from '../../components/SocailLogins/SocialLogin'
-import Login  from '../../components/login/Login'
+import SocialLogin from '../../components/SocailLogins/SocialLogin'
+import Login from '../../components/login/Login'
 
 const centerContainerStyle = {
   display: 'flex',
@@ -14,20 +14,25 @@ const contentStyle = {
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '10px',
-
 };
 
 const componentWrapperStyle = {
-  margin: '0 20px', // 좌우 여백을 10px로 설정합니다.
+  margin: '0 20px',
+  display: 'flex',
+  flexDirection: 'column', 
+  alignItems: 'center',
+};
+
+const headingStyle = {
+  marginBottom: '100px',
 };
 
 export default function LoginPage() {
   return (
-
     <div style={centerContainerStyle}>
       <div style={contentStyle}>
         <div style={componentWrapperStyle}>
-          <h2>Login</h2>
+          <h2 style={headingStyle}>Login</h2> {/* Centered horizontally */}
           <SocialLogin />
         </div>
         <div style={componentWrapperStyle}>
@@ -35,6 +40,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-
   );
 }
