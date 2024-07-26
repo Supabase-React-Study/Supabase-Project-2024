@@ -1,7 +1,27 @@
+"use client";
 import MyPageCss from "./MyPageCss.css";
+import { useEffect } from 'react';
 import MemberImg from "./member.png";
-
+import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/utils/supabase/client';
 export default function MyPage() {
+    const router = useRouter();
+    const supabase = createClient(); // Supabase 클라이언트 생성
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT') {
+        router.push('/login');
+      } else if (event === 'SIGNED_IN') {
+        router.push('/mypage');
+      }
+    });
+
+    return () => {
+        authListener.subscription?.unsubscribe();
+    };
+  }, [router]);
+
     return (
         <section>
             <header class="mypage-header">

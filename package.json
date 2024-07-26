@@ -12,6 +12,7 @@
     "autoprefixer": "10.4.17",
     "geist": "^1.2.1",
     "next": "latest",
+    "next-auth": "^4.24.7",
     "next-images": "^1.8.5",
     "postcss": "8.4.33",
     "postgres": "^3.4.4",
