@@ -1,34 +1,26 @@
-'use client'
-
+"use client";
 import MyPageCss from "./MyPageCss.css";
 import { useEffect } from 'react';
 import MemberImg from "./member.png";
+import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/utils/supabase/client';
+export default function MyPage() {
+    const router = useRouter();
+    const supabase = createClient(); // Supabase 클라이언트 생성
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT') {
+        router.push('/login');
+      } else if (event === 'SIGNED_IN') {
+        router.push('/mypage');
+      }
+    });
 
-import React, { useEffect } from 'react';
-import { createClient } from '@/utils/supabase/client'
-import { redirect } from "next/dist/server/api-utils";
-
-
-export default async function MyPage() {
-
-    const supabase = createClient();
-
-    const {
-        data: { user },
-      } = await supabase.auth.getUser();
-
-    console.log(user);
-
-    const resetPwEmail = async () => {
-        alert("supabase 연동");
-
-        const { data, error } = await supabase.auth
-            .resetPasswordForEmail('n0rkjdx0@gmail.com', {
-                redirectTo: `http://localhost:3000/modifypassword`
-            })
-
-        redirect("http://localhost:3000/mailpage");
-    }
+    return () => {
+        authListener.subscription?.unsubscribe();
+    };
+  }, [router]);
 
     return (
         <section>
@@ -39,7 +31,7 @@ export default async function MyPage() {
             <form className="user-info">
                 <div className="mail-addr">
                     <div>メールアドレス</div>
-                    <input placeholder={user.email} id="email" />
+                    <input placeholder="abcde@gmail.com" id="email"/>
                 </div>
                 <div className="nickn">
                     <div>ニックネーム</div>
@@ -54,11 +46,11 @@ export default async function MyPage() {
                     </div>
                 </div>
                 <div className="btns">
-                    <button id="ch-password" name="ch-password" value="パスワード 変更" onClick={() => resetPwEmail()}> パスワード 変更</button>
-                <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
-            </div>
-        </form>
-        </section >
+                    <button id="ch-password" name="ch-password" value="パスワード 変更">パスワード 変更</button>
+                    <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
+                </div>
+            </form>
+        </section>
 
     );
 }
