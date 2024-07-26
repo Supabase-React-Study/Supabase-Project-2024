@@ -1,8 +1,10 @@
-
-"use client";
 import LoginCss from './LoginCss.css'
 import React from 'react';
-import {login} from '@/app/login/actions'
+import { createClient } from '@/utils/supabase/server'
+
+import { SubmitButton } from "@/app/login/submit-button";
+import { login } from '@/app/login/actions'
+
 export default function Login() {
     return (
         <section>
@@ -12,18 +14,16 @@ export default function Login() {
             <form className="user-info">
                 <div className="mail-addr">
                     <div>メールアドレス</div>
-                    <input placeholder="abcde@gmail.com" type="email" id="email"/>
+                    <input placeholder="you@example.com" type="email" name="email" />
                 </div>
                 <div className="password">
                     <div>パスワード</div>
-                    <input type="password" id="password"></input>
+                    <input placeholder="••••••••" type="password" name="password"></input>
                 </div>
                 <div className="btns">
-                    
-                    <button formAction={login} >ログイン</button>
+                    <SubmitButton formAction={login}>ログイン</SubmitButton>
                 </div>
             </form>
         </section>
-
     );
 }
