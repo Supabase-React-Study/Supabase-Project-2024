@@ -2,14 +2,12 @@
 
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-
 import { createClient } from '@/utils/supabase/server'
 
 export async function login(formData: FormData) {
   const supabase = createClient()
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+ 
   const data = {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
@@ -21,7 +19,7 @@ export async function login(formData: FormData) {
     redirect('/error')
   }
 
-  revalidatePath('/', 'layout')
+  revalidatePath('/', 'layout') //페이지 레이아웃 캐시 무효화 
   redirect('/mypage')
 }
 
@@ -34,7 +32,7 @@ export async function signup(formData: FormData) {
     password: formData.get('password') as string,
   }
 
-  const options = {
+  const options = { 
     data: {
       nickn: formData.get('nickn') as string,
       sex: formData.get('sex') as string,
