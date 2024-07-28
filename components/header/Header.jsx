@@ -4,6 +4,7 @@ import Link from 'next/link'; // Next.js의 Link 컴포넌트를 import
 import styles from './Header.module.css';
 
 
+
 import logo from '@/components/Header/imgs/logo.png'; // 로고 이미지 경로에 맞게 수정
 
 const Header = () => {
@@ -14,7 +15,9 @@ const Header = () => {
           <Image src={logo} alt="Logo" width={250} className={styles.logo} />
         </div>
       </Link>
-      <button className={styles.logoutButton}>로그아웃</button>
+      <form action="/auth/logout" method="post">
+      <button className={styles.logoutButton} type="submit" >로그아웃</button>
+      </form>
     </div>
   );
 };
