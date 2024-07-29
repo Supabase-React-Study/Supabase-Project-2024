@@ -22,8 +22,9 @@ export default function Login() {
                     <input placeholder="••••••••" type="password" name="password"></input>
                 </div>
                 <div className="btns">
-                    <SubmitButton formAction={login} pendingText='ログイン中...'>ログイン</SubmitButton> 
+                  <a><SubmitButton formAction={login} pendingText='ログイン中...'>ログイン</SubmitButton></a> 
                     <a href='/signup'>新規登録</a>
+                   
                 </div>
                 
             </form>

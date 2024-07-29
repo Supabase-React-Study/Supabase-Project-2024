@@ -103,7 +103,7 @@
     align-items: center;
     justify-content: center;
 }
-.btns>button,.btns>a {
+.btns>a>button,.btns>a {
     /* Button */
     text-decoration: none;
     box-sizing: border-box;
@@ -129,8 +129,8 @@
     justify-content: center;
 }
 
-.btns>a:hover,
-.btns>button:hover {
+
+.btns>a>button:hover,.btns>a:hover{
     background: #3c3c3c;
     cursor: pointer;
 }
