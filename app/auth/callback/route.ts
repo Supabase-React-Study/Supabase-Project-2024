@@ -1,25 +1,24 @@
-import { NextResponse } from 'next/server'
-// The client you created from the Server-Side Auth instructions
-import { createClient } from '@/utils/supabase/server'
+import { NextResponse } from 'next/server';
+import { createClient } from '@/utils/supabase/server';
 
 export async function GET(request: Request) {
-  const { searchParams, origin } = new URL(request.url)
-  const code = searchParams.get('code')
-  // if "next" is in param, use it as the redirect URL
-  const next = searchParams.get('next') ?? '/'
-  console.log(code);
-  console.log(next);
+  const { searchParams, origin } = new URL(request.url);
+  const code = searchParams.get('code');
+  const next = searchParams.get('next') ?? '/mypage';
+  
+  console.log('받은 코드:', code);
+  console.log('리디렉션 URL:', next);
+
   if (code) {
     const supabase = createClient();
-    const { session, error } = await supabase.auth.exchangeCodeForSession(code);
+    const { data: { session }, error } = await supabase.auth.exchangeCodeForSession(code);
   
     if (error) {
-      console.error('Error exchanging code for session:', error);
+      console.error('세션 교환 오류:', error);
       return NextResponse.redirect(`${origin}/auth/auth-code-error`);
     }
   
-    // Optional: Log session details for debugging
-    console.log('Session:', session);
+    console.log('세션:', session);
   
     const forwardedHost = request.headers.get('x-forwarded-host');
     const isLocalEnv = process.env.NODE_ENV === 'development';
@@ -33,6 +32,5 @@ export async function GET(request: Request) {
     }
   }
   
-  // return the user to an error page with instructions
-  return NextResponse.redirect(`${origin}/auth/auth-code-error`)
+  return NextResponse.redirect(`${origin}/auth/auth-code-error`);
 }

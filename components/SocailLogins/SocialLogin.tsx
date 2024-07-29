@@ -19,7 +19,7 @@ export default function SocialLogin() {
         
         
         options: {
-          redirect_to: "https://localhost:3000/auth/callback/",
+          redirectTo: "http://localhost:3000/auth/callback",
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
