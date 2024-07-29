@@ -32,6 +32,7 @@ export default async function MyPage() {
         const userinfo = data[0];
         console.log(userinfo);
 
+
     return (
         <section>
             <header className="mypage-header">
@@ -47,7 +48,7 @@ export default async function MyPage() {
                     <div>ニックネーム</div>
                     <input placeholder={userinfo.name}></input>
                 </div>
-                <MyPage_Gender gender={userinfo.gender}/>
+                {/* <MyPage_Gender gender={userinfo.gender}/> */}
                 {/* <div className="sex">
                     <div>性別</div>
                     <div className="select-sex">
@@ -63,6 +64,5 @@ export default async function MyPage() {
                 </div>
             </form>
         </section >
-
     );
 }
