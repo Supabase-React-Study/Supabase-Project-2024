@@ -32,7 +32,7 @@ export default function LoginPage() {
     <div style={centerContainerStyle}>
       <div style={contentStyle}>
         <div style={componentWrapperStyle}>
-          <h2 style={headingStyle}>Login</h2> {/* Centered horizontally */}
+          <h2 style={headingStyle}>Login</h2> 
           <SocialLogin />
         </div>
         <div style={componentWrapperStyle}>

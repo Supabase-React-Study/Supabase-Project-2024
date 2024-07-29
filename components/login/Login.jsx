@@ -1,11 +1,12 @@
 import LoginCss from './LoginCss.css'
 import React from 'react';
 import { createClient } from '@/utils/supabase/server'
-
 import { SubmitButton } from "@/app/login/submit-button";
 import { login } from '@/app/login/actions'
 
+
 export default function Login() {
+   
     return (
         <section>
             <header className="login-header">
@@ -21,8 +22,10 @@ export default function Login() {
                     <input placeholder="••••••••" type="password" name="password"></input>
                 </div>
                 <div className="btns">
-                    <SubmitButton formAction={login}>ログイン</SubmitButton>
+                    <SubmitButton formAction={login} pendingText='ログイン中...'>ログイン</SubmitButton> 
+                    <a href='/signup'>新規登録</a>
                 </div>
+                
             </form>
         </section>
     );

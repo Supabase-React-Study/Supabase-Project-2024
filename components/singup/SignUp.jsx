@@ -1,7 +1,8 @@
-"use client";
+
 import React from 'react';
 import SignupCss from './SignupCss.css'
-
+import { signup } from '@/app/login/actions';
+import { SubmitButton } from "@/app/login/submit-button";
 
 export default function SignUp() {
     return (
@@ -12,34 +13,35 @@ export default function SignUp() {
             <form className="user-info">
                 <div className="mail-addr">
                     <div>メールアドレス</div>
-                    <input placeholder="abcde@gmail.com" type="email" id="email"/>
+                    <input placeholder="abcde@gmail.com" type="email" name="email"/>
                 </div>
                 <div className="password">
                     <div>パスワード</div>
-                    <input type="password" id="password"/>
+                    <input placeholder="••••••••" type="password" name="password"/>
                 </div>
                 <div className="check-pw">
                     <div>パスワード確認</div>
-                    <input type="check-pw" id="check-pw"/>
+                    <input placeholder="••••••••" type="password" id="check-pw"/>
                 </div>
                 <div className="nickn">
                     <div>ニックネーム</div>
-                    <input placeholder="abcde" type="nickn" id="nickn"/>
+                    <input placeholder="abcde" type="nickn" name="nickn"/>
                 </div>
                 <div className="sex">
                     <div>性別</div>
-                    <div class="select-sex">
-                        <input type="radio" id="sex" value="man"/>男
-                        <input type="radio" id="sex" value="woman"/>女
-                        <input type="radio" id="sex" value="etc"/>その他
+                    <div className="select-sex">
+                        <input type="radio" id="man" name="sex" value="man"/><label htmlFor="男">男</label>
+                        <input type="radio" id="woman" name="sex" value="woman"/><label htmlFor="女">女</label>
+                        <input type="radio" id="etc" name="sex" value="etc"/><label htmlFor="その他">その他</label>
                     </div>
                 </div>
                 <div className="agree">
                     <input type="checkbox" id="agree"/>
                     利用規約および個人情報の取扱いについてに同意する。
                 </div>
+
                 <div className="btns">
-                    <button id="signup" name="signup" value="signup">登録</button>
+                    <SubmitButton formAction={signup}>登録</SubmitButton>
                 </div>
             </form>
         </section>
