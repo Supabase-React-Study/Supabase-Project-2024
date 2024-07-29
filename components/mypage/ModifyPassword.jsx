@@ -1,33 +1,35 @@
 'use client'
 
 import ModifyPasswordCss from "./ModifyPasswordCss.css";
+import { createClient } from '@/utils/supabase/client';
 
-import React, { useState, useEffect } from 'react';
-import { createClient } from '@/utils/supabase/client'
+import React from 'react';
 
-export default function ModifyPassword() {
+import { resetPwEmail } from '../../app/modifypassword/action';
 
-    const supabase = createClient();
+export default function ModifyPassword({ userInfo }) {
 
-        const [email, password] = useState("", "");
+    // const supabase = createClient();
 
-        useEffect(() => {
-            alert("useEffect");
+    //     const [email, password] = useState("", "");
 
-            supabase.auth.onAuthStateChange(async (event, session) => {
+    //     useEffect(() => {
+    //         alert("useEffect");
 
-                console.log(event, session);
+    //         supabase.auth.onAuthStateChange(async (event, session) => {
 
-                if (true) {     // event == "PASSWORD_RECOVERY"
-                    const newPassword = prompt("What would you like your new password to be?");
-                    const { data, error } = await supabase.auth
-                        .updateUser({ password: newPassword })
+    //             console.log(event, session);
 
-                    if (data) alert("Password updated successfully!")
-                    if (error) alert("There was an error updating your password.")
-                } 
-            })
-        }, [])
+    //             if (true) {     // event == "PASSWORD_RECOVERY"
+    //                 const newPassword = prompt("What would you like your new password to be?");
+    //                 const { data, error } = await supabase.auth
+    //                     .updateUser({ password: newPassword })
+
+    //                 if (data) alert("Password updated successfully!")
+    //                 if (error) alert("There was an error updating your password.")
+    //             } 
+    //         })
+    //     }, [])
         
     return (
         <section>
@@ -38,7 +40,7 @@ export default function ModifyPassword() {
             <form className="password-modify">
                 <div className="mail-addr">
                     <div>メールアドレス</div>
-                    <input placeholder="(유저 이메일 정보)" readOnly/>
+                    <input placeholder={userInfo.email} id="email" value={userInfo.email} readOnly/>
                 </div>
                 <div className="password-check">
                     <div className="pw">
@@ -53,11 +55,9 @@ export default function ModifyPassword() {
 
                 <div className="btns">
                     <button id="back" name="back" value="back" type="button" onclick="location.href='http://localhost:3000/mypage'">戻る</button>
-                    <button id="update" name="update" value="update" onClick={() => resetPwEmail()}>変更</button>
+                    <button id="update" name="update" value="update" onClick={() => resetPwEmail(userInfo.email)}>変更</button>
                 </div>
             </form>
         </section>
-
-
     );
 }

@@ -52,14 +52,14 @@ export default function MyPage({ user, userInfo }) {
           <div>ニックネーム</div>
           <input placeholder={userInfo.name}  value={userInfo.name} readOnly/>
         </div>
-        <div className="sex">
+        <div className="gender">
           <div>性別</div>
           <div className="select-sex">
             <input type="hidden" value={userInfo.gender} readOnly/>
             <input
               type="radio" 
               id="man" 
-              name="sex" 
+              name="gender" 
               value="0" 
               checked={selectedGender === 'man'} 
               // onChange={() => setSelectedGender('man')}
@@ -69,7 +69,7 @@ export default function MyPage({ user, userInfo }) {
             <input
               type="radio" 
               id="woman" 
-              name="sex" 
+              name="gender" 
               value="1" 
               checked={selectedGender === 'woman'} 
               // onChange={() => setSelectedGender('woman')}
@@ -79,7 +79,7 @@ export default function MyPage({ user, userInfo }) {
             <input
               type="radio" 
               id="etc" 
-              name="sex" 
+              name="gender" 
               value="2" 
               checked={selectedGender === 'etc'} 
               // onChange={() => setSelectedGender('etc')}

@@ -9,6 +9,24 @@ import { createClient } from '@/utils/supabase/server'
 export async function resetPwEmail(email) {
   const supabase = createClient()
 
+  console.log("실행?");
+
+  const { data, error } = await supabase.auth
+      .resetPasswordForEmail(email, { // email
+          redirectTo: `http://localhost:3000/modifypassword`
+      })
+
+  // if (error) {
+  //   console.error('', error);
+  //   return NextResponse.redirect(`https://${forwardedHost}/error`);
+  // }
+
+  // NextResponse.redirect(`https://${forwardedHost}/mypage`);
+}
+
+export async function updateUserInfo(email, name, gender) {
+  const supabase = createClient()
+
   const { data, error } = await supabase.auth
       .resetPasswordForEmail(email, { // email
           redirectTo: `http://localhost:3000/modifypassword`

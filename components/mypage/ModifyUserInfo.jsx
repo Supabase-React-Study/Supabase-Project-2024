@@ -46,20 +46,20 @@ export default function ModifyUserInfo({ userInfo }) {
       <form className="user-info">
         <div className="mail-addr">
           <div>メールアドレス</div>
-          <input placeholder={userInfo.email} id="email" value={userInfo.email}/>
+          <input placeholder={userInfo.email} id="email"/>
         </div>
         <div className="nickn">
           <div>ニックネーム</div>
-          <input placeholder={userInfo.name}  value={userInfo.name}/>
+          <input placeholder={userInfo.name}/>
         </div>
-        <div className="sex">
+        <div className="gender">
           <div>性別</div>
           <div className="select-sex">
-            <input type="hidden" value={userInfo.gender}/>
+            <input type="hidden"/>
             <input
               type="radio" 
               id="man" 
-              name="sex" 
+              name="gender" 
               value="0" 
               checked={selectedGender === 'man'} 
               onChange={() => setSelectedGender('man')}
@@ -68,7 +68,7 @@ export default function ModifyUserInfo({ userInfo }) {
             <input
               type="radio" 
               id="woman" 
-              name="sex" 
+              name="gender" 
               value="1" 
               checked={selectedGender === 'woman'} 
               onChange={() => setSelectedGender('woman')}
@@ -77,7 +77,7 @@ export default function ModifyUserInfo({ userInfo }) {
             <input
               type="radio" 
               id="etc" 
-              name="sex" 
+              name="gender" 
               value="2" 
               checked={selectedGender === 'etc'} 
               onChange={() => setSelectedGender('etc')} 
@@ -86,8 +86,8 @@ export default function ModifyUserInfo({ userInfo }) {
           </div>
         </div>
         <div className="btns">
-          <button id="ch-password" name="ch-password" value="パスワード 変更">パスワード 変更</button>
-          <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
+        <button id="back" name="back" value="back" onclick ="history.back();">戻る</button>
+        <button id="update" name="update" value="update">変更</button>
         </div>
       </form>
     </section>
