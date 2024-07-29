@@ -1,69 +1,94 @@
-'use server'
+
+"use client";
 
 import MyPageCss from "./MyPageCss.css";
-import { useEffect } from 'react';
-import MemberImg from "./member.png";
-import MyPage_Gender from "./MyPage_Gender.jsx";
+import { useEffect, useState } from 'react';
+import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
 
-// import { getUserInfo, resetPasswordForEmail } from '../../app/mypage/action'
-import React from "react";
+export default function MyPage({ user, userInfo }) {
+  const router = useRouter();
+  const supabase = createClient(); // Supabase 클라이언트 생성
 
-import { createClient } from '@/utils/supabase/server'
+  const [selectedGender, setSelectedGender] = useState('');
 
-export default async function MyPage() {
+  useEffect(() => {
+    // Initialize selectedGender based on userInfo.gender
+    if (userInfo?.gender === '0') {
+      setSelectedGender('man');
+    } else if (userInfo?.gender === '1') {
+      setSelectedGender('woman');
+    } else if (userInfo?.gender === '2' || userInfo?.gender === null) {
+      setSelectedGender('etc');
+    } else {
+      setSelectedGender(''); // Default or no gender selected
+    }
 
-    // const userInfo = getUserInfo(); // user.email
-    // console.log("----- mypage.jsx -----");
-    // console.log(userInfo);
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT') {
+        router.push('/login');
+      } else if (event === 'SIGNED_IN') {
+        router.push('/mypage');
+      }
+    });
 
-        const supabase = createClient()
+    return () => {
+      authListener.subscription?.unsubscribe();
+    };
+  }, [router, userInfo?.gender, supabase]);
 
-        const {
-            data: { user },
-        } = await supabase.auth.getUser();
-
-        console.log("---------- user.email 으로 user 정보 가져오는 중 ... ----------");
-
-        const { data, error } = await supabase
-            .from('userinfo')
-            .select('email, name, gender')
-            .eq("email", user.email)
-
-
-        const userinfo = data[0];
-        console.log(userinfo);
-
-
-    return (
-        <section>
-            <header className="mypage-header">
-                <h2>マイページ</h2>
-                <img className="fit-picture" alt="member-default-profile-img" src="https://www.pngall.com/wp-content/uploads/10/Member-Silhouette-Transparent.png" />
-            </header>
-            <form className="user-info">
-                <div className="mail-addr">
-                    <div>メールアドレス</div>
-                    <input placeholder={userinfo.email} id="email" />
-                </div>
-                <div className="nickn">
-                    <div>ニックネーム</div>
-                    <input placeholder={userinfo.name}></input>
-                </div>
-                {/* <MyPage_Gender gender={userinfo.gender}/> */}
-                {/* <div className="sex">
-                    <div>性別</div>
-                    <div className="select-sex">
-                        <input type="radio" id="man" name="gender" value="man" /><label for="男">男</label>
-                        <input type="radio" id="woman" name="gender" value="woman" /><label for="女">女</label>
-                        <input type="radio" id="etc" name="gender" value="etc" /><label for="その他">その他</label>
-                    </div>
-                </div> */}
-                <div className="btns">
-                    <button id="ch-password" name="ch-password" value="パスワード 変更"> パスワード 変更</button>
-                    {/* <onClick={() => resetPwEmail()}/> */}
-                    <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
-                </div>
-            </form>
-        </section >
-    );
+  return (
+    <section>
+      <header className="mypage-header">
+        <h2>マイページ</h2>
+        <img className="fit-picture" src="https://www.pngall.com/wp-content/uploads/10/Member-Silhouette-Transparent.png" alt="member-default-profile-img" />
+      </header>
+      <form className="user-info">
+        <div className="mail-addr">
+          <div>メールアドレス</div>
+          <input placeholder={user.email} id="email" />
+        </div>
+        <div className="nickn">
+          <div>ニックネーム</div>
+          <input placeholder={user.user_metadata.user_name} />
+        </div>
+        <div className="sex">
+          <div>性別</div>
+          <div className="select-sex">
+            <input 
+              type="radio" 
+              id="man" 
+              name="sex" 
+              value="0" 
+              checked={selectedGender === 'man'} 
+              onChange={() => setSelectedGender('man')} 
+            />
+            <label htmlFor="man">男</label>
+            <input 
+              type="radio" 
+              id="woman" 
+              name="sex" 
+              value="1" 
+              checked={selectedGender === 'woman'} 
+              onChange={() => setSelectedGender('woman')} 
+            />
+            <label htmlFor="woman">女</label>
+            <input 
+              type="radio" 
+              id="etc" 
+              name="sex" 
+              value="2" 
+              checked={selectedGender === 'etc'} 
+              onChange={() => setSelectedGender('etc')} 
+            />
+            <label htmlFor="etc">その他</label>
+          </div>
+        </div>
+        <div className="btns">
+          <button id="ch-password" name="ch-password" value="パスワード 変更">パスワード 変更</button>
+          <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
+        </div>
+      </form>
+    </section>
+  );
 }
