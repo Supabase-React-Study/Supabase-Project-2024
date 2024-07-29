@@ -46,40 +46,44 @@ export default function MyPage({ user, userInfo }) {
       <form className="user-info">
         <div className="mail-addr">
           <div>メールアドレス</div>
-          <input placeholder={user.email} id="email" />
+          <input placeholder={userInfo.email} id="email" value={userInfo.email} readOnly/>
         </div>
         <div className="nickn">
           <div>ニックネーム</div>
-          <input placeholder={user.user_metadata.user_name} />
+          <input placeholder={userInfo.name}  value={userInfo.name} readOnly/>
         </div>
         <div className="sex">
           <div>性別</div>
           <div className="select-sex">
-            <input 
+            <input type="hidden" value={userInfo.gender} readOnly/>
+            <input
               type="radio" 
               id="man" 
               name="sex" 
               value="0" 
               checked={selectedGender === 'man'} 
-              onChange={() => setSelectedGender('man')} 
+              // onChange={() => setSelectedGender('man')}
+              onclick="return(false);"
             />
             <label htmlFor="man">男</label>
-            <input 
+            <input
               type="radio" 
               id="woman" 
               name="sex" 
               value="1" 
               checked={selectedGender === 'woman'} 
-              onChange={() => setSelectedGender('woman')} 
+              // onChange={() => setSelectedGender('woman')}
+              onclick="return false;"
             />
             <label htmlFor="woman">女</label>
-            <input 
+            <input
               type="radio" 
               id="etc" 
               name="sex" 
               value="2" 
               checked={selectedGender === 'etc'} 
-              onChange={() => setSelectedGender('etc')} 
+              // onChange={() => setSelectedGender('etc')}
+              onclick="return false;" 
             />
             <label htmlFor="etc">その他</label>
           </div>

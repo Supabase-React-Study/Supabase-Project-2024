@@ -1,13 +1,12 @@
 'use client';
 
-import ModifyUserInfo from '../../components/mypage/ModifyUserInfo'
-
 import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
+import MyPageJSX from '../../components/mypage/MyPage';
 
-export default function MyPage() {
-
+export default function fetch() {
+    
   const [user, setUser] = useState(null);// auth.user
   const [userInfo, setUserInfo] = useState(null); // public.userinfo
   const [loading, setLoading] = useState(true);
@@ -51,7 +50,5 @@ export default function MyPage() {
     return <div>Loading...</div>;
   }
 
-  return (
-    <ModifyUserInfo userInfo={userInfo} />
-  );
+  return userInfo;
 }
