@@ -30,9 +30,9 @@ export default function SignUp() {
                 <div className="sex">
                     <div>性別</div>
                     <div className="select-sex">
-                        <input type="radio" id="man" name="sex" value="man"/><label htmlFor="男">男</label>
-                        <input type="radio" id="woman" name="sex" value="woman"/><label htmlFor="女">女</label>
-                        <input type="radio" id="etc" name="sex" value="etc"/><label htmlFor="その他">その他</label>
+                        <input type="radio" id="man" name="sex" value="0"/><label htmlFor="男">男</label>
+                        <input type="radio" id="woman" name="sex" value="1"/><label htmlFor="女">女</label>
+                        <input type="radio" id="etc" name="sex" value="2"/><label htmlFor="その他">その他</label>
                     </div>
                 </div>
                 <div className="agree">

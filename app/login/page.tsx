@@ -1,6 +1,7 @@
 import { login, signup } from './actions'
 import SocialLogin from '../../components/SocailLogins/SocialLogin'
 import Login from '../../components/login/Login'
+import '@/components/header/Header'
 
 const centerContainerStyle = {
   display: 'flex',
@@ -42,3 +43,4 @@ export default function LoginPage() {
     </div>
   );
 }
+
