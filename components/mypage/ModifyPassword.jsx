@@ -30,7 +30,7 @@ function changePassword(password, passwordCh) {
 
     alert("!!");
 
-    redirect("/mypage");
+    redirect("/login");
 }
 
 export default function ModifyPassword({ userInfo }) {
@@ -62,7 +62,6 @@ export default function ModifyPassword({ userInfo }) {
                         <div>パスワード確認</div>
                         <input placeholder="パスワードをもう一度入力してください。" type="password"
                             onChange={e => {
-                                ;
                                 setPasswordCh(e.currentTarget.value);
                             }} />
                     </div>
@@ -70,7 +69,7 @@ export default function ModifyPassword({ userInfo }) {
 
                 <div className="btns">
                     <a href="http://localhost:3000/mypage">戻る</a>
-                    <button id="update" name="update" value="update" onClick={() => changePassword(password, passwordCh)}>
+                    <button id="update" name="update" onClick={() => changePassword(password, passwordCh)}>
                         変更</button>
                 </div>
             </form>

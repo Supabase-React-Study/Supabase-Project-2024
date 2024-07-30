@@ -21,7 +21,7 @@ export async function resetPwEmail(email) {
   }
 
   // "メールを送りました。確認してください。"　ページに移動
-  // return NextResponse.redirect(`http://${forwardedHost}/mailpage`);
+  redirect(`http://localhost:3000/mailpage`);
 }
 
 export async function updatePassword(newPw) {
@@ -29,21 +29,16 @@ export async function updatePassword(newPw) {
 
   console.log("updatePassword");
 
-  supabase.auth.onAuthStateChange(async (event, session) => {
+const { data, error } = await supabase.auth
+    .updateUser({ password: newPw });
 
-    console.log(event);
-    console.log(session);
 
-    if (event == "PASSWORD_RECOVERY") {
-      const newPassword = prompt("What would you like your new password to be?");
-      const { data, error } = await supabase.auth
-        .updateUser({ password: newPassword })
+  if (data) console.log("Password updated successfully!");
+  if (error) console.log("There was an error updating your password.");
 
-      if (data) console.log("Password updated successfully!");
-      if (error) console.log("There was an error updating your password.");
-    }
-  });
+  const { signOutError } = await supabase.auth.signOut();
 
+  if (signOutError) console.log("signOutError");
 }
 
 export async function updateUserInfo(email, name, gender) {

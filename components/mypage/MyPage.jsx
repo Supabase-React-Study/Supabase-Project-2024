@@ -25,17 +25,6 @@ export default function MyPage({ user, userInfo }) {
       setSelectedGender(''); // Default or no gender selected
     }
 
-    // const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-    //   if (event === 'SIGNED_OUT') {
-    //     router.push('/login');
-    //   } else if (event === 'SIGNED_IN') {
-    //     router.push('/mypage');
-    //   }
-    // });
-
-    // return () => {
-    //   authListener.subscription?.unsubscribe();
-    // };
   }, [router, userInfo?.gender, supabase]);
 
   // Check the provider to determine which elements to hide
@@ -47,7 +36,7 @@ export default function MyPage({ user, userInfo }) {
         <h2>マイページ</h2>
         <img className="fit-picture" src="https://www.pngall.com/wp-content/uploads/10/Member-Silhouette-Transparent.png" alt="member-default-profile-img" />
       </header>
-      <form className="user-info">
+      <div className="user-info">
         <div className="mail-addr">
           <div>メールアドレス</div>
           <input placeholder={userInfo.email} id="email" value={userInfo.email} readOnly/>
@@ -57,7 +46,7 @@ export default function MyPage({ user, userInfo }) {
           <>
             <div className="nickn">
               <div>ニックネーム</div>
-              <input placeholder={user.user_metadata.user_name} readOnly />
+              <input placeholder={userInfo.name} readOnly />
             </div>
 
             <div className="sex">
@@ -100,7 +89,7 @@ export default function MyPage({ user, userInfo }) {
         </div>
         </>
         )}
-      </form>
+      </div>
     </section>
   );
 }
