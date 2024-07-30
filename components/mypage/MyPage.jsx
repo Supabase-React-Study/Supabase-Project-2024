@@ -1,4 +1,3 @@
-
 "use client";
 
 import MyPageCss from "./MyPageCss.css";
@@ -37,6 +36,9 @@ export default function MyPage({ user, userInfo }) {
     };
   }, [router, userInfo?.gender, supabase]);
 
+  // Check the provider to determine which elements to hide
+  const isProviderKakaoOrGoogle = user.app_metadata?.provider === 'kakao' || user.app_metadata?.provider === 'google';
+
   return (
     <section>
       <header className="mypage-header">
@@ -46,47 +48,56 @@ export default function MyPage({ user, userInfo }) {
       <form className="user-info">
         <div className="mail-addr">
           <div>メールアドレス</div>
-          <input placeholder={user.email} id="email" />
+          <input placeholder={user.email} id="email"readOnly />
         </div>
-        <div className="nickn">
-          <div>ニックネーム</div>
-          <input placeholder={user.user_metadata.user_name} />
-        </div>
-        <div className="sex">
-          <div>性別</div>
-          <div className="select-sex">
-            <input 
-              type="radio" 
-              id="man" 
-              name="sex" 
-              value="0" 
-              checked={selectedGender === 'man'} 
-              onChange={() => setSelectedGender('man')} 
-            />
-            <label htmlFor="man">男</label>
-            <input 
-              type="radio" 
-              id="woman" 
-              name="sex" 
-              value="1" 
-              checked={selectedGender === 'woman'} 
-              onChange={() => setSelectedGender('woman')} 
-            />
-            <label htmlFor="woman">女</label>
-            <input 
-              type="radio" 
-              id="etc" 
-              name="sex" 
-              value="2" 
-              checked={selectedGender === 'etc'} 
-              onChange={() => setSelectedGender('etc')} 
-            />
-            <label htmlFor="etc">その他</label>
-          </div>
-        </div>
+        {!isProviderKakaoOrGoogle && (
+          <>
+            <div className="nickn">
+              <div>ニックネーム</div>
+              <input placeholder={user.user_metadata.user_name} readOnly />
+            </div>
+
+            <div className="sex">
+              <div>性別</div>
+              <div className="select-sex">
+                <input 
+                  type="radio" 
+                  id="man" 
+                  name="sex" 
+                  value="0" 
+                  checked={selectedGender === 'man'} 
+                  onChange={() => setSelectedGender('man')} 
+                />
+                <label htmlFor="man">男</label>
+                <input 
+                  type="radio" 
+                  id="woman" 
+                  name="sex" 
+                  value="1" 
+                  checked={selectedGender === 'woman'} 
+                  onChange={() => setSelectedGender('woman')} 
+                />
+                <label htmlFor="woman">女</label>
+                <input 
+                  type="radio" 
+                  id="etc" 
+                  name="sex" 
+                  value="2" 
+                  checked={selectedGender === 'etc'} 
+                  onChange={() => setSelectedGender('etc')} 
+                />
+                <label htmlFor="etc">その他</label>
+              </div>
+            </div>
+          </>
+        )}
         <div className="btns">
-          <button id="ch-password" name="ch-password" value="パスワード 変更">パスワード 変更</button>
-          <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
+          {!isProviderKakaoOrGoogle && (
+            <>
+              <button id="ch-password" name="ch-password" value="パスワード 変更">パスワード 変更</button>
+              <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
+            </>
+          )}
         </div>
       </form>
     </section>
