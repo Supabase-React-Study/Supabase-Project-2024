@@ -6,6 +6,7 @@ import { createClient } from '@/utils/supabase/client';
 import React, { useState } from 'react';
 
 import { resetPwEmail } from '../../app/modifypassword/action';
+import { redirect } from "next/dist/server/api-utils";
 
 function checkPw(password, passwordCh) {
     if(password === passwordCh) {
@@ -23,12 +24,14 @@ function sendPwEmail(password, passwordCh, email) {
 
     if(checkPw(password, passwordCh) == true) {
 
-        alert("메일 전송");
+        
 
-        resetPwEmail(email);
+        // 실제로 변경
     };
 
     alert("!!");
+
+    redirect("/mypage");
 }
 
 export default function ModifyPassword({ userInfo }) {

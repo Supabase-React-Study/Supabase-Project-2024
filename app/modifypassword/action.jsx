@@ -19,7 +19,7 @@ export async function resetPwEmail(email) {
     }
 
     // "メールを送りました。確認してください。"　ページに移動
-    redirect("/mailpage")
+    return NextResponse.redirect(`http://${forwardedHost}/mailpage`);
 }
 
 export async function updateUserInfo(email, name, gender) {
