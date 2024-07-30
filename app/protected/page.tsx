@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
-
 import { createClient } from '@/utils/supabase/server'
+
 
 export default async function PrivatePage() {
   const supabase = createClient()
@@ -10,5 +10,9 @@ export default async function PrivatePage() {
     redirect('/login')
   }
 
-  return <p>Hello {data.user.email}</p>
+  return (
+    <div>
+      <p>Hello {data.user.email}</p>
+    </div>
+)
 }

@@ -1,5 +1,3 @@
-'use client'
-
 import ModifyPasswordCss from "./ModifyPasswordCss.css";
 import { createClient } from '@/utils/supabase/client';
 
