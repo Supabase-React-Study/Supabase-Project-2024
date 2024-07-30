@@ -7,23 +7,34 @@ import React, { useState } from 'react';
 
 import { resetPwEmail } from '../../app/modifypassword/action';
 
-function checkPw(value, currentPw) {
-    if(value == currentPw) {return true;}
+function checkPw(password, passwordCh) {
+    if(password === passwordCh) {
+        
+        alert("success");
+        return true;}
 
-
-    alert("PW 불일치!");
+    alert("fail");
     return false;
 }
 
-function sendPwEmail(value, currentPw) {
-    if(checkPw(value, currentPw)) {
-        resetPwEmail(userInfo.email)
+function sendPwEmail(password, passwordCh, email) {
+    alert(password);
+    alert(passwordCh);
+
+    if(checkPw(password, passwordCh) == true) {
+
+        alert("메일 전송");
+
+        resetPwEmail(email);
     };
+
+    alert("!!");
 }
 
 export default function ModifyPassword({ userInfo }) {
 
-    const [value, setValue] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordCh, setPasswordCh] = useState('');
 
     // const supabase = createClient();
 
@@ -65,25 +76,23 @@ export default function ModifyPassword({ userInfo }) {
                         <div>パスワード</div>
                         <input placeholder="パスワードを入力してください。" 
                                 type="password" 
-                                value={value}
+                                value={password}
                                 onChange={e => { 
-                                    setValue(e.currentTarget.value); 
+                                    setPassword(e.currentTarget.value); 
                                     }}/>
                     </div>
                     <div className="pw-check">
                         <div>パスワード変更</div>
                         <input placeholder="パスワードをもう一度入力してください。" type="password"
-                                value={value}
-                                onChange={e => {
-                                    if(checkPw(value, e.currentTarget.value)){;
-                                    setValue(e.currentTarget.value)}; 
+                                onChange={e => {;
+                                    setPasswordCh(e.currentTarget.value); 
                                     }}/>
                     </div>
                 </div>
 
                 <div className="btns">
-                    <button id="back" name="back" value="back" type="button" onclick="location.href='http://localhost:3000/mypage'">戻る</button>
-                    <button id="update" name="update" value="update" onClick={() => sendPwEmail(value, currentPw)}>
+                    <a href ="http://localhost:3000/mypage">戻る</a>
+                    <button id="update" name="update" value="update" onClick={() => sendPwEmail(password, passwordCh, userInfo.email)}>
                                                                                         変更</button>
                 </div>
             </form>

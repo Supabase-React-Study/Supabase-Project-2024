@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
+import { resetPwEmail } from '../../app/modifypassword/action';
+
 export default function MyPage({ user, userInfo }) {
   const router = useRouter();
   const supabase = createClient(); // Supabase 클라이언트 생성
@@ -89,7 +91,7 @@ export default function MyPage({ user, userInfo }) {
           </div>
         </div>
         <div className="btns">
-          <a href="/modifypassword" id="ch-password" name="ch-password">パスワード 変更</a>
+          <button id="ch-password" name="ch-password" onClick={() => resetPwEmail(userInfo.email)}>パスワード 変更</button>
           <a href="/modifyuserinfo" id="ch-userinfo" name="ch-userinfo">変更</a>
         </div>
       </form>
