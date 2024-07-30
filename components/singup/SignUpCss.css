@@ -1,3 +1,4 @@
+/* 기본 스타일 */
 .signup-header {
     width: 213px;
     height: 160.4px;
@@ -6,7 +7,6 @@
     margin-bottom: 40px;
     text-align: center;
 }
-
 
 .user-info {
     margin: 0 auto;
@@ -24,43 +24,23 @@
 
     width: 416px;
     min-width: 320px;
-    height: 600px;
+    min-height: 600px;
 
     background: #FFFFFF;
     border: 1px solid #D9D9D9;
     border-radius: 8px;
 }
 
-.mail-addr>input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 16px;
+/* 오류 메시지 스타일 */
+.error-message {
+    color: red;
+    font-size: 14px;
     margin-top: 5px;
-
-    width: 320px;
-    height: 10px;
-
-    background: #FFFFFF;
-    border: 1px solid #D9D9D9;
-    border-radius: 8px;
 }
 
-.password>input, .check-pw>input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 16px;
-    margin-top: 5px;
 
-    width: 320px;
-    height: 10px;
-
-    background: #FFFFFF;
-    border: 1px solid #D9D9D9;
-    border-radius: 8px;
-}
-
+/* 입력 필드 기본 스타일 */
+.mail-addr>input,
 .nickn>input {
     display: flex;
     flex-direction: row;
@@ -75,7 +55,50 @@
     border: 1px solid #D9D9D9;
     border-radius: 8px;
 }
+/* 비밀번호 입력 필드 스타일 */
+.password,
+.check-pw {
+    position: relative;
+    width: 320px;
+}
 
+.password>input,
+.check-pw>input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    margin-top: 5px;
+
+    width: 100%;
+    height: 10px;
+
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    padding-right: 16px; /* 아이콘 공간 확보 */
+}
+
+.password>button,
+.check-pw>button {
+    position: absolute;
+    left: 310px;
+    top: 72%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em; /* 아이콘 크기 조정 */
+}
+
+
+/* 오류 발생 시 입력 필드 스타일 */
+.input-error {
+    border: 1px solid red;
+    padding: 12px 16px 20px 20px; /* 오류 발생 시 패딩 조정 */
+}
+
+/* 성별 선택 스타일 */
 .sex {
     display: flex;
     width: 100%;
@@ -89,6 +112,7 @@
     margin-left: 100px;
 }
 
+/* 버튼 기본 스타일 */
 .btns {
     display: flex;
     align-items: center;
@@ -121,3 +145,5 @@
     background: #3c3c3c; /* hover 효과 추가 */
     cursor: pointer;
 }
+
+
