@@ -25,17 +25,17 @@ export default function MyPage({ user, userInfo }) {
       setSelectedGender(''); // Default or no gender selected
     }
 
-    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_OUT') {
-        router.push('/login');
-      } else if (event === 'SIGNED_IN') {
-        router.push('/mypage');
-      }
-    });
+    // const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+    //   if (event === 'SIGNED_OUT') {
+    //     router.push('/login');
+    //   } else if (event === 'SIGNED_IN') {
+    //     router.push('/mypage');
+    //   }
+    // });
 
-    return () => {
-      authListener.subscription?.unsubscribe();
-    };
+    // return () => {
+    //   authListener.subscription?.unsubscribe();
+    // };
   }, [router, userInfo?.gender, supabase]);
 
   // Check the provider to determine which elements to hide

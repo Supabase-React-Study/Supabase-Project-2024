@@ -9,6 +9,8 @@ import { createClient } from '@/utils/supabase/server'
 export async function resetPwEmail(email) {
   const supabase = createClient()
 
+  console.log("resetPwEmail");
+
   const { data, error } = await supabase.auth
       .resetPasswordForEmail(email, { // email
           redirectTo: `http://localhost:3000/modifypassword`
@@ -19,7 +21,14 @@ export async function resetPwEmail(email) {
     }
 
     // "メールを送りました。確認してください。"　ページに移動
-    return NextResponse.redirect(`http://${forwardedHost}/mailpage`);
+    // return NextResponse.redirect(`http://${forwardedHost}/mailpage`);
+}
+
+export async function updatePassword(newPw) {
+  const supabase = createClient()
+
+  console.log("updatePassword");
+  const { user, error } = await supabase.auth.update({password: newPw})
 }
 
 export async function updateUserInfo(email, name, gender) {

@@ -3,28 +3,28 @@ import { createClient } from '@/utils/supabase/client';
 
 import React, { useState } from 'react';
 
-import { resetPwEmail } from '../../app/modifypassword/action';
+import { updatePassword } from '../../app/modifypassword/action';
 import { redirect } from "next/dist/server/api-utils";
 
+// password & password_check 일치하는지 확인
 function checkPw(password, passwordCh) {
-    if(password === passwordCh) {
-        
-        alert("success");
-        return true;}
-
-    alert("fail");
+    if(password === passwordCh) {    
+        return true;
+    }
     return false;
 }
 
-function sendPwEmail(password, passwordCh, email) {
+// 
+function changePassword(password, passwordCh, email) {
     alert(password);
     alert(passwordCh);
 
-    if(checkPw(password, passwordCh) == true) {
+    if(changePassword(password, passwordCh) == true) {
 
-        
+        // 비밀번호 변경
+        updatePassword(password);
 
-        // 실제로 변경
+        alert("비밀번호 변경 성공");
     };
 
     alert("!!");
@@ -85,6 +85,7 @@ export default function ModifyPassword({ userInfo }) {
                     <div className="pw-check">
                         <div>パスワード変更</div>
                         <input placeholder="パスワードをもう一度入力してください。" type="password"
+                                value={passwordCh}
                                 onChange={e => {;
                                     setPasswordCh(e.currentTarget.value); 
                                     }}/>
@@ -93,7 +94,7 @@ export default function ModifyPassword({ userInfo }) {
 
                 <div className="btns">
                     <a href ="http://localhost:3000/mypage">戻る</a>
-                    <button id="update" name="update" value="update" onClick={() => sendPwEmail(password, passwordCh, userInfo.email)}>
+                    <button id="update" name="update" value="update" onClick={() => changePassword(password)}>
                                                                                         変更</button>
                 </div>
             </form>
