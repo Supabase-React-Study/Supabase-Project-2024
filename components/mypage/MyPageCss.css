@@ -1,6 +1,6 @@
 /* ----------------------------- */
 input::placeholder {
-    color: #D9D9D9;
+    color: #111111;
 }
 
 textarea::placeholder {
@@ -35,8 +35,7 @@ body {
     width: 213px;
     height: 160.4px;
 
-    margin: 250px auto;
-    margin-bottom: 40px;
+    margin: 100px auto 40px auto;
     text-align: center;
 }
 
@@ -63,7 +62,7 @@ body {
 
     width: 416px;
     min-width: 320px;
-    height: 327px;
+    height: 100%;
 
     background: #FFFFFF;
     border: 1px solid #D9D9D9;
@@ -85,7 +84,7 @@ body {
     border: 1px solid #D9D9D9;
     border-radius: 8px;
 
-    outline: none;
+    /* outline: none; */
 }
 
 .nickn>input {
@@ -101,9 +100,11 @@ body {
     background: #FFFFFF;
     border: 1px solid #D9D9D9;
     border-radius: 8px;
+
+    /* outline: none; */
 }
 
-.sex {
+.gender {
     display: flex;
     width: 100%;
 }
@@ -116,8 +117,14 @@ body {
     margin-left: 100px;
 }
 
-.btns>button {
+[type="radio"]:hover {
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .btns>button,.btns>a {
     /* Button */
+    text-decoration: none;
     box-sizing: border-box;
 
     justify-content: center;
@@ -133,8 +140,20 @@ body {
     border-radius: 8px;
     color: #fafafa;
 
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 1;
+    
+    text-align: center;
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btns>a:hover,
+.btns>button:hover {
+    background: #3c3c3c;
+    cursor: pointer;
+}
+
+.btns {
+    display: flex;
 }
