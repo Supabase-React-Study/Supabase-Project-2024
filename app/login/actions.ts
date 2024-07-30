@@ -36,6 +36,7 @@ export async function signup(formData: FormData) {
     data: {
       nickn: formData.get('nickn') as string,
       sex: formData.get('sex') as string,
+      agree: formData.get('agree') as string
     }
   }
 
@@ -45,15 +46,22 @@ export async function signup(formData: FormData) {
     options,
   
   })
- 
+    
   if (error) {
-    redirect('/error')
-  }
+    let translatedErrorMessage = "不明なエラーが発生しました。";
+    if (error.message === "User already registered") {
+      translatedErrorMessage = "※ユーザーはすでに登録されています。";
+    }
 
-  revalidatePath('/', 'layout')
-  redirect('/mypage')
+    return { error: translatedErrorMessage }
+  }
+  
+  return { success: true };
+  
+
 }
 
+//로그아웃
 export async function signout() {
   const supabase = createClient()
 

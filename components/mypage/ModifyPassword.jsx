@@ -60,11 +60,13 @@ export default function ModifyPassword({ userInfo }) {
                     </div>
                     <div className="pw-check">
                         <div>パスワード確認</div>
+
                         <input placeholder="パスワードをもう一度入力してください。" type="password"
                             onChange={e => {
                                 ;
                                 setPasswordCh(e.currentTarget.value);
                             }} />
+
                     </div>
                 </div>
 
