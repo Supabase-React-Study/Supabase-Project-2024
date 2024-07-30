@@ -52,46 +52,7 @@ export default function MyPage({ user, userInfo }) {
           <div>メールアドレス</div>
           <input placeholder={userInfo.email} id="email" value={userInfo.email} readOnly/>
         </div>
-        <div className="nickn">
-          <div>ニックネーム</div>
-          <input placeholder={userInfo.name}  value={userInfo.name} readOnly/>
-        </div>
-        <div className="gender">
-          <div>性別</div>
-          <div className="select-sex">
-            <input type="hidden" value={userInfo.gender} readOnly/>
-            <input
-              type="radio" 
-              id="man" 
-              name="gender" 
-              value="0" 
-              checked={selectedGender === 'man'} 
-              // onChange={() => setSelectedGender('man')}
-              onclick="return(false);"
-            />
-            <label htmlFor="man">男</label>
-            <input
-              type="radio" 
-              id="woman" 
-              name="gender" 
-              value="1" 
-              checked={selectedGender === 'woman'} 
-              // onChange={() => setSelectedGender('woman')}
-              onclick="return false;"
-            />
-            <label htmlFor="woman">女</label>
-            <input
-              type="radio" 
-              id="etc" 
-              name="gender" 
-              value="2" 
-              checked={selectedGender === 'etc'} 
-              // onChange={() => setSelectedGender('etc')}
-              onclick="return false;" 
-            />
-            <label htmlFor="etc">その他</label>
-          </div>
-        </div>
+        
         {!isProviderKakaoOrGoogle && (
           <>
             <div className="nickn">
@@ -131,12 +92,14 @@ export default function MyPage({ user, userInfo }) {
                 <label htmlFor="etc">その他</label>
               </div>
             </div>
-          </>
-        )}
+          
+        
         <div className="btns">
           <button id="ch-password" name="ch-password" onClick={() => resetPwEmail(userInfo.email)}>パスワード 変更</button>
           <a href="/modifyuserinfo" id="ch-userinfo" name="ch-userinfo">変更</a>
         </div>
+        </>
+        )}
       </form>
     </section>
   );
