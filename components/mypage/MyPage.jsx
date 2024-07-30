@@ -89,8 +89,8 @@ export default function MyPage({ user, userInfo }) {
           </div>
         </div>
         <div className="btns">
-          <button id="ch-password" name="ch-password" value="パスワード 変更">パスワード 変更</button>
-          <button type="button" id="ch-userinfo" name="ch-userinfo" value="変更">変更</button>
+          <a href="/modifypassword" id="ch-password" name="ch-password">パスワード 変更</a>
+          <a href="/modifyuserinfo" id="ch-userinfo" name="ch-userinfo">変更</a>
         </div>
       </form>
     </section>
