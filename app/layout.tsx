@@ -1,7 +1,6 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer'
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -19,10 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html>
+      <head>
+        {/*눈모양 아이콘 스타일 링크*/}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /> 
+      </head>
       <body>
         <header>
-
-        <Header />
+          <Header />
         </header>
         <main className="min-h-screen flex flex-col items-center">
           {children}

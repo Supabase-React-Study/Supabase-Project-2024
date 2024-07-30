@@ -18,7 +18,7 @@ export default function ModifyPassword() {
                         <input placeholder="パスワードを入力してください。"/>
                     </div>
                     <div className="pw-check">
-                        <div>パスワード変更</div>
+                        <div>パスワード確認</div>
                         <input placeholder="パスワードをもう一度入力してください。"/>
                     </div>
                 </div>

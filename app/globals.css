@@ -29,3 +29,27 @@ body {
 }
 
 
+.centerContainerStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.contentStyle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.componentWrapperStyle {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headingStyle {
+    margin-bottom: 100px;
+}
