@@ -27,6 +27,15 @@ export default function MyPage({ user, userInfo }) {
 
   }, [router, userInfo?.gender, supabase]);
 
+  const [namePlaceholder, setNamePlaceholder] = useState(userInfo.name)
+  useEffect(() => {
+    if(userInfo.name == null) {
+        setNamePlaceholder('ニックネームがないです。');
+
+        
+    }
+  })
+
   // Check the provider to determine which elements to hide
   const isProviderKakaoOrGoogle = user.app_metadata?.provider === 'kakao' || user.app_metadata?.provider === 'google';
 
@@ -46,7 +55,7 @@ export default function MyPage({ user, userInfo }) {
           <>
             <div className="nickn">
               <div>ニックネーム</div>
-              <input placeholder={userInfo.name} readOnly />
+              <input placeholder={namePlaceholder} style={{color: "#d9d9d9"}} readOnly />
             </div>
 
             <div className="sex">
