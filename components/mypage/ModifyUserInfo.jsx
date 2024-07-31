@@ -6,11 +6,14 @@ import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
+import { updateUserInfo } from '../../app/modifypassword/action';
+
 export default function ModifyUserInfo({ userInfo }) {
   const router = useRouter();
   const supabase = createClient(); // Supabase 클라이언트 생성
 
   const [selectedGender, setSelectedGender] = useState('');
+  const [gender, setGender] = useState(userInfo.gender);
 
   useEffect(() => {
     // Initialize selectedGender based on userInfo.gender
@@ -18,7 +21,7 @@ export default function ModifyUserInfo({ userInfo }) {
       setSelectedGender('man');
     } else if (userInfo?.gender === '1') {
       setSelectedGender('woman');
-    } else if (userInfo?.gender === '2' || userInfo?.gender === null) {
+    } else if (userInfo?.gender === '2') {
       setSelectedGender('etc');
     } else {
       setSelectedGender(''); // Default or no gender selected
@@ -37,6 +40,8 @@ export default function ModifyUserInfo({ userInfo }) {
     };
   }, [router, userInfo?.gender, supabase]);
 
+  const [name, setName] = useState(userInfo.name);
+
   return (
     <section>
       <header className="mypage-header">
@@ -46,11 +51,13 @@ export default function ModifyUserInfo({ userInfo }) {
       <form className="user-info">
         <div className="mail-addr">
           <div>メールアドレス</div>
-          <input placeholder={userInfo.email} id="email"/>
+          <input placeholder={userInfo.email} id="email" readOnly/>
         </div>
         <div className="nickn">
           <div>ニックネーム</div>
-          <input placeholder={userInfo.name}/>
+          <input placeholder={userInfo.name} onChange={e => {
+                                setName(e.currentTarget.value);
+                            }}/>
         </div>
         <div className="gender">
           <div>性別</div>
@@ -62,7 +69,8 @@ export default function ModifyUserInfo({ userInfo }) {
               name="gender" 
               value="0" 
               checked={selectedGender === 'man'} 
-              onChange={() => setSelectedGender('man')}
+              onChange={() => {setSelectedGender('man'); setGender(0);}
+              }
             />
             <label htmlFor="man">男</label>
             <input
@@ -71,7 +79,7 @@ export default function ModifyUserInfo({ userInfo }) {
               name="gender" 
               value="1" 
               checked={selectedGender === 'woman'} 
-              onChange={() => setSelectedGender('woman')}
+              onChange={() => {setSelectedGender('woman'); setGender(1);}}
             />
             <label htmlFor="woman">女</label>
             <input
@@ -80,14 +88,14 @@ export default function ModifyUserInfo({ userInfo }) {
               name="gender" 
               value="2" 
               checked={selectedGender === 'etc'} 
-              onChange={() => setSelectedGender('etc')} 
+              onChange={() => {setSelectedGender('etc'); setGender(2);}} 
             />
             <label htmlFor="etc">その他</label>
           </div>
         </div>
         <div className="btns">
-        <button id="back" name="back" value="back" onclick ="history.back();">戻る</button>
-        <button id="update" name="update" value="update">変更</button>
+        <button id="back" name="back" value="back" onclick ="/mypage">戻る</button>
+        <button id="update" name="update" onClick={() => updateUserInfo(name, gender, userInfo.email)}>変更</button>
         </div>
       </form>
     </section>
