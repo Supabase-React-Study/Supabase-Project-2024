@@ -41,18 +41,18 @@ const { data, error } = await supabase.auth
   if (signOutError) console.log("signOutError");
 }
 
-export async function updateUserInfo(email, name, gender) {
-  const supabase = createClient()
+export async function updateUserInfo(newName, newGender, userEmail) {
+  const supabase = createClient();
 
-  const { data, error } = await supabase.auth
-    .resetPasswordForEmail(email, { // email
-      redirectTo: `http://localhost:3000/modifypassword`
-    })
+  
+  const { data, error } = await supabase
+  .from('userinfo')
+  .update({ name: newName, 
+            gender: newGender
+  })
+  .match({ email: userEmail })
 
-  // if (error) {
-  //   console.error('', error);
-  //   return NextResponse.redirect(`https://${forwardedHost}/error`);
-  // }
+    if (data) console.log("UserInfo updated successfully!");
+    if (error) console.log("There was an error updating User Information.");
 
-  // NextResponse.redirect(`https://${forwardedHost}/mypage`);
 }
