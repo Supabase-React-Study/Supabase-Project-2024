@@ -1,6 +1,6 @@
 
 import SocialLogin  from '../../components/SocailLogins/SocialLogin'
-import SignUp  from '../../components/singup/SignUp'
+import SignUp  from '@/components/signup/SignUp'
 
 export default function SignUPPage() {
   return (
