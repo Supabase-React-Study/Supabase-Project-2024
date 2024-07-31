@@ -94,7 +94,7 @@ export default function ModifyUserInfo({ userInfo }) {
           </div>
         </div>
         <div className="btns">
-        <button id="back" name="back" value="back" onclick ="/mypage">戻る</button>
+        <a href="/mypage">戻る</a>
         <button id="update" name="update" onClick={() => updateUserInfo(name, gender, userInfo.email)}>変更</button>
         </div>
       </form>
