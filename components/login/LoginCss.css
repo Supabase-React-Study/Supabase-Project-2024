@@ -135,6 +135,10 @@
     cursor: pointer;
 }
 
-
-
+/* 오류 메시지 스타일 */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
 

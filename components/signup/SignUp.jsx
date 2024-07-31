@@ -66,7 +66,7 @@ export default function SignUp() {
             setPasswordError('※パスワードを入力してください。');
             valid = false;
         } else if (!isPasswordValid(password)) {
-            setPasswordError('※ パスワードは半角8文字以上、英数字、特殊文字を組み合わせで入力してください。');
+            setPasswordError('※パスワードは半角8文字以上、英数字、特殊文字を組み合わせで入力してください。    ※!@#$%^&*+-=');
            
             valid = false;
         }
