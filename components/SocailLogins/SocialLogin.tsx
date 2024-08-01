@@ -22,7 +22,7 @@ export default function SocialLogin() {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider,
         options: {
-          redirectTo: defaultUrl +"/auth/callback",
+          redirectTo: "http://supabase-project-2024.vercel.app/auth/callback",
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
