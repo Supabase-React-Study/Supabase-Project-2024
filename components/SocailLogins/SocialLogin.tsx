@@ -6,6 +6,9 @@ import Script from 'next/script';
 import { createClient } from '../../utils/supabase/client';
 import KakaoButton from '../../components/SocailLogins/imgs/kakao_login_large_narrow.png';
 import GmailButton from '../../components/SocailLogins/imgs/web_light_sq_SU@3x.png';
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
 // Define a type for supported OAuth providers
 type OAuthProvider = 'kakao' | 'google';
@@ -19,7 +22,7 @@ export default function SocialLogin() {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider,
         options: {
-          redirectTo: "http://localhost:3000/auth/callback",
+          redirectTo: defaultUrl +"/auth/callback",
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
