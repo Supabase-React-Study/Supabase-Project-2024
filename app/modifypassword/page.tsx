@@ -1,51 +1,56 @@
 'use client';
-
 import { useEffect, useState } from 'react';
 import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import ModifyPasswordJSX from '../../components/mypage/ModifyPassword';
-import { User as SupabaseUser } from '@supabase/auth-js'; 
-// User 타입 정의
+import { User as SupabaseUser } from '@supabase/auth-js';
+
 type User = {
+  id: string;
   email: string;
+  // 다른 필드들을 추가합니다
 };
 
-// UserInfo 타입 정의
 type UserInfo = {
+  id: string;
   email: string;
   name: string;
+  phone?: string;
+  address?: string;
 };
 
 export default function ModifyPassword() {
-  const [user, setUser] = useState<SupabaseUser | null>(null); // Supabase의 User 타입 또는 null// User 또는 null 타입으로 설정
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null); // UserInfo 또는 null 타입으로 설정
+  const [user, setUser] = useState<User | null>(null);
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const supabase = createClient();
 
-    // 사용자 정보를 가져오는 함수
     async function fetchUser() {
       const { data: userData, error: userError } = await supabase.auth.getUser();
 
       if (userError || !userData?.user) {
-        router.push('/login'); // 로그인 페이지로 리디렉션
+        router.push('/login');
       } else {
-        // 타입 단언을 사용하여 명확하게 설정
-        setUser(userData.user as User);
+        // SupabaseUser를 User 타입으로 변환
+        const convertedUser: User = {
+          id: userData.user.id,
+          email: userData.user.email,
+          // 필요한 필드를 매핑합니다
+        };
+        setUser(convertedUser);
 
-        // 추가 정보 가져오기
         const { data: userInfoData, error: userInfoError } = await supabase
-          .from('userinfo') // public.userInfo 테이블
-          .select('*') // 필요한 열을 선택
-          .eq('email', userData.user.email) // 사용자 이메일로 필터링
+          .from('userinfo')
+          .select('*')
+          .eq('email', userData.user.email)
           .single();
 
         if (userInfoError) {
           console.error('Error fetching user info:', userInfoError);
         } else {
-          // 타입 단언을 사용하여 명확하게 설정
           setUserInfo(userInfoData as UserInfo);
         }
       }
