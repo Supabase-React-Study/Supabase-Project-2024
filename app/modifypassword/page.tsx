@@ -11,8 +11,9 @@ type UserInfo = {
   name: string;
 
 };
+
 export default function ModifyPassword() {
-  const [user, setUser] = useState<SupabaseUser | null>(null); // Supabase의 User 타입 사용
+  const [user, setUser] = useState<SupabaseUser | null>(null); // Supabase의 User 타입 또는 null
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -24,10 +25,9 @@ export default function ModifyPassword() {
       const { data: userData, error: userError } = await supabase.auth.getUser();
 
       if (userError || !userData?.user) {
-        router.push('/login');
+        router.push('/login'); // 로그인 페이지로 리디렉션
       } else {
-        // Supabase의 User 타입을 그대로 사용
-        setUser(userData.user);
+        setUser(userData.user); // Supabase의 User 타입을 그대로 사용
 
         const { data: userInfoData, error: userInfoError } = await supabase
           .from('userinfo')
