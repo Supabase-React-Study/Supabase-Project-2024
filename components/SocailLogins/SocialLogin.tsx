@@ -7,7 +7,7 @@ import { createClient } from '../../utils/supabase/client';
 import KakaoButton from '../../components/SocailLogins/imgs/kakao_login_large_narrow.png';
 import GmailButton from '../../components/SocailLogins/imgs/web_light_sq_SU@3x.png';
 const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+  ? `http://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
 
 // Define a type for supported OAuth providers
