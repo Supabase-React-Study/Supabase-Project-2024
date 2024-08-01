@@ -19,7 +19,7 @@ export default function SocialLogin() {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider,
         options: {
-          redirectTo: "/auth/callback",
+          redirectTo: "http://localhost:3000/auth/callback",
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
