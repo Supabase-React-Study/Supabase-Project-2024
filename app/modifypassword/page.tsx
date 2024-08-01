@@ -1,29 +1,43 @@
 'use client';
-import ModifyPasswordJSX from '../../components/mypage/ModifyPassword'
 
 import { useEffect, useState } from 'react';
 import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
+import ModifyPasswordJSX from '../../components/mypage/ModifyPassword';
+
+// User 타입 정의
+type User = {
+  email: string;
+  created_at: string;
+  updated_at: string;
+  provider: string;
+};
+
+// UserInfo 타입 정의
+type UserInfo = {
+
+  email: string;
+  name: string;
+};
 
 export default function ModifyPassword() {
-
-  const [user, setUser] = useState(null);// auth.user
-  const [userInfo, setUserInfo] = useState(null); // public.userinfo
+  const [user, setUser] = useState<User | null>(null); // User 또는 null 타입으로 설정
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null); // UserInfo 또는 null 타입으로 설정
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-
     const supabase = createClient();
 
-    // 사용자 정보를 가져오는함수
+    // 사용자 정보를 가져오는 함수
     async function fetchUser() {
       const { data: userData, error: userError } = await supabase.auth.getUser();
 
       if (userError || !userData?.user) {
         router.push('/login'); // 로그인 페이지로 리디렉션
       } else {
-        setUser(userData.user);
+        // 타입 단언을 사용하여 명확하게 설정
+        setUser(userData.user as User);
 
         // 추가 정보 가져오기
         const { data: userInfoData, error: userInfoError } = await supabase
@@ -35,9 +49,8 @@ export default function ModifyPassword() {
         if (userInfoError) {
           console.error('Error fetching user info:', userInfoError);
         } else {
-
-          console.log('Fetched user info:', userInfoData);
-          setUserInfo(userInfoData);
+          // 타입 단언을 사용하여 명확하게 설정
+          setUserInfo(userInfoData as UserInfo);
         }
       }
       setLoading(false);
@@ -51,6 +64,8 @@ export default function ModifyPassword() {
   }
 
   return (
-    <div><ModifyPasswordJSX userInfo={userInfo} /></div>
-  )
+    <div>
+      <ModifyPasswordJSX userInfo={userInfo} />
+    </div>
+  );
 }
