@@ -4,24 +4,20 @@ import { useEffect, useState } from 'react';
 import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import ModifyPasswordJSX from '../../components/mypage/ModifyPassword';
-
+import { User as SupabaseUser } from '@supabase/auth-js'; 
 // User 타입 정의
 type User = {
   email: string;
-  created_at: string;
-  updated_at: string;
-  provider: string;
 };
 
 // UserInfo 타입 정의
 type UserInfo = {
-
   email: string;
   name: string;
 };
 
 export default function ModifyPassword() {
-  const [user, setUser] = useState<User | null>(null); // User 또는 null 타입으로 설정
+  const [user, setUser] = useState<SupabaseUser | null>(null); // Supabase의 User 타입 또는 null// User 또는 null 타입으로 설정
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null); // UserInfo 또는 null 타입으로 설정
   const [loading, setLoading] = useState(true);
   const router = useRouter();
