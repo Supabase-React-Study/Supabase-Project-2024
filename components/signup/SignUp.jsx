@@ -104,7 +104,7 @@ export default function SignUp() {
                 setGeneralError(result.error);
             } else if (result.success) {
                 // 가입 성공 후 페이지 리다이렉트
-                window.location.href = '/mailpage'; // 메일전송 페이지로 리다이렉트
+                redirect('/mailpage'); // 메일전송 페이지로 리다이렉트
             }
         } catch (error) {
             // 서버 오류 발생 시 콘솔에 에러 출력 및 일반 오류 메시지 설정
@@ -112,6 +112,7 @@ export default function SignUp() {
             setGeneralError('※サーバーエラーが発生しました。');
         }
 
+        
     };
 
     return (
