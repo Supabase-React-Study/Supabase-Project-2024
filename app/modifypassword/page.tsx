@@ -3,24 +3,16 @@ import { useEffect, useState } from 'react';
 import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import ModifyPasswordJSX from '../../components/mypage/ModifyPassword';
-import { User as SupabaseUser } from '@supabase/auth-js';
-
-type User = {
-  id: string;
-  email: string;
-  // 다른 필드들을 추가합니다
-};
+import { User as SupabaseUser } from '@supabase/auth-js'; // Supabase의 User 타입을 가져옵니다
 
 type UserInfo = {
   id: string;
   email: string;
   name: string;
-  phone?: string;
-  address?: string;
-};
 
+};
 export default function ModifyPassword() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null); // Supabase의 User 타입 사용
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -34,13 +26,8 @@ export default function ModifyPassword() {
       if (userError || !userData?.user) {
         router.push('/login');
       } else {
-        // SupabaseUser를 User 타입으로 변환
-        const convertedUser: User = {
-          id: userData.user.id,
-          email: userData.user.email,
-          // 필요한 필드를 매핑합니다
-        };
-        setUser(convertedUser);
+        // Supabase의 User 타입을 그대로 사용
+        setUser(userData.user);
 
         const { data: userInfoData, error: userInfoError } = await supabase
           .from('userinfo')
