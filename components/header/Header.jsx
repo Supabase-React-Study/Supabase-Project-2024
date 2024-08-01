@@ -32,7 +32,7 @@ export default async function Header () {
   // 로그인 된 상태
   return (
     <div className="header">
-      <Link href="/login">
+      <Link href="/mypage">
         <div className="logoContainer">
           <Image src={logo} alt="Logo" width={250} className="logo" />
         </div>
