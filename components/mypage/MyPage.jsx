@@ -68,6 +68,7 @@ export default function MyPage({ user, userInfo }) {
                   value="0" 
                   checked={selectedGender === 'man'} 
                   onChange={() => setSelectedGender('man')} 
+                  disabled
                 />
                 <label htmlFor="man">男</label>
                 <input 
@@ -77,6 +78,7 @@ export default function MyPage({ user, userInfo }) {
                   value="1" 
                   checked={selectedGender === 'woman'} 
                   onChange={() => setSelectedGender('woman')} 
+                  disabled
                 />
                 <label htmlFor="woman">女</label>
                 <input 
@@ -86,6 +88,7 @@ export default function MyPage({ user, userInfo }) {
                   value="2" 
                   checked={selectedGender === 'etc'} 
                   onChange={() => setSelectedGender('etc')} 
+                  disabled
                 />
                 <label htmlFor="etc">その他</label>
               </div>
