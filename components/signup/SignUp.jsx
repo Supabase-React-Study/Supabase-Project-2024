@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 import SignUpCss from './SignUpCss.css'; 
-import { signup } from '@/app/login/actions';
+import { signup, redir } from '@/app/login/actions';
 import { SubmitButton } from "@/app/login/submit-button";
+import { redirect } from 'next/dist/server/api-utils';
+
 
 
 export default function SignUp() {
@@ -99,19 +101,21 @@ export default function SignUp() {
         // 폼 데이터 제출
         try {
             const result = await signup(formData);
-            if (result.error) {
-                // 오류가 발생하면 일반 오류 메시지 설정
+            console.log(result);
+          
+            // if (result.error == null) {
+            //     // 오류가 발생하면 일반 오류 메시지 설정
+            //     setGeneralError(result.error);
+            // } else {
                 setGeneralError(result.error);
-            } else if (result.success) {
-                // 가입 성공 후 페이지 리다이렉트
-                window.location.href = '/mypage'; // 사용자의 페이지로 리다이렉트
-            }
+
         } catch (error) {
             // 서버 오류 발생 시 콘솔에 에러 출력 및 일반 오류 메시지 설정
             console.error('加入エラー:', error);
             setGeneralError('※サーバーエラーが発生しました。');
         }
-
+        
+        redir();
     };
 
     return (

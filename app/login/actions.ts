@@ -3,6 +3,8 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
+import exp from 'constants'
+
 
 export async function login(formData: FormData) {
   const supabase = createClient()
@@ -36,7 +38,7 @@ export async function login(formData: FormData) {
 
 }
 
-export async function signup(formData: FormData) {
+export async function signupProcess(formData: FormData){
   const supabase = createClient()
 
   
@@ -67,7 +69,7 @@ export async function signup(formData: FormData) {
     return { error: translatedErrorMessage }
   }
 
-  //유저정보 DB에 업데이트
+  //유저정보 supabase에 업데이트
   const userEmail = data.user?.email;
 
   if (userEmail) {
@@ -82,10 +84,18 @@ export async function signup(formData: FormData) {
     }
   }
 
-
-  return { success: true };
+  return { error : "error x"};
   
+}
 
+export async function signup(formData: FormData) {
+
+    signupProcess(formData);
+    
+}
+
+export async function redir() {
+  redirect('/mailpage');
 }
 
 //로그아웃
