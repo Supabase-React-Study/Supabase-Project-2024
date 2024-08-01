@@ -1,43 +1,44 @@
 'use client';
-import ModifyPasswordJSX from '../../components/mypage/ModifyPassword'
-
 import { useEffect, useState } from 'react';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
+import ModifyPasswordJSX from '../../components/mypage/ModifyPassword';
+import { User as SupabaseUser } from '@supabase/auth-js'; // Supabase의 User 타입을 가져옵니다
 
+type UserInfo = {
+  id: string;
+  email: string;
+  name: string;
+
+};
 export default function ModifyPassword() {
-
-  const [user, setUser] = useState(null);// auth.user
-  const [userInfo, setUserInfo] = useState(null); // public.userinfo
+  const [user, setUser] = useState<SupabaseUser | null>(null); // Supabase의 User 타입 사용
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-
     const supabase = createClient();
 
-    // 사용자 정보를 가져오는함수
     async function fetchUser() {
       const { data: userData, error: userError } = await supabase.auth.getUser();
 
       if (userError || !userData?.user) {
-        router.push('/login'); // 로그인 페이지로 리디렉션
+        router.push('/login');
       } else {
+        // Supabase의 User 타입을 그대로 사용
         setUser(userData.user);
 
-        // 추가 정보 가져오기
         const { data: userInfoData, error: userInfoError } = await supabase
-          .from('userinfo') // public.userInfo 테이블
-          .select('*') // 필요한 열을 선택
-          .eq('email', userData.user.email) // 사용자 이메일로 필터링
+          .from('userinfo')
+          .select('*')
+          .eq('email', userData.user.email)
           .single();
 
         if (userInfoError) {
           console.error('Error fetching user info:', userInfoError);
         } else {
-
-          console.log('Fetched user info:', userInfoData);
-          setUserInfo(userInfoData);
+          setUserInfo(userInfoData as UserInfo);
         }
       }
       setLoading(false);
@@ -51,6 +52,8 @@ export default function ModifyPassword() {
   }
 
   return (
-    <div><ModifyPasswordJSX userInfo={userInfo} /></div>
-  )
+    <div>
+      <ModifyPasswordJSX userInfo={userInfo} />
+    </div>
+  );
 }

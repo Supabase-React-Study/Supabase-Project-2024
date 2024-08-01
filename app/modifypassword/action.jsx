@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { createClient } from '@/utils/supabase/server'
+import { createClient } from '../../utils/supabase/server'
 
 export async function resetPwEmail(email) {
   const supabase = createClient()
