@@ -3,10 +3,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link'; // Next.js의 Link 컴포넌트를 import
 import HeaderCss from './HeaderCss.css';
-import logo from '@/components/Header/imgs/logo.png'; // 로고 이미지 경로에 맞게 수정
-import { SubmitButton } from '@/app/login/submit-button';
-import { signout } from '@/app/login/actions'
-import { createClient } from '@/utils/supabase/server';
+import logo from '../../components/Header/imgs/logo.png'; // 로고 이미지 경로에 맞게 수정
+
+import { SubmitButton } from '../../app/login/submit-button';
+import { signout } from '../../app/login/actions'
+import { createClient } from '../../utils/supabase/server';
 
 
 export default async function Header () {

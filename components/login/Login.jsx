@@ -2,8 +2,8 @@
 
 import LoginCss from './LoginCss.css'
 import React, { useState } from 'react';
-import { SubmitButton } from "@/app/login/submit-button";
-import { login } from '@/app/login/actions'
+import { SubmitButton } from "../../app/login/submit-button";
+import { login } from '../../app/login/actions'
 
 
 export default function Login() {

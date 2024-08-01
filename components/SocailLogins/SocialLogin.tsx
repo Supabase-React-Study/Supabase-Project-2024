@@ -3,9 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
-import { createClient } from '@/utils/supabase/client';
-import KakaoButton from '@/components/SocailLogins/imgs/kakao_login_large_narrow.png';
-import GmailButton from '@/components/SocailLogins/imgs/web_light_sq_SU@3x.png';
+import { createClient } from '../../utils/supabase/client';
+import KakaoButton from '../../components/SocailLogins/imgs/kakao_login_large_narrow.png';
+import GmailButton from '../../components/SocailLogins/imgs/web_light_sq_SU@3x.png';
 
 export default function SocialLogin() {
   

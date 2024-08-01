@@ -2,7 +2,7 @@
 import ModifyPasswordJSX from '../../components/mypage/ModifyPassword'
 
 import { useEffect, useState } from 'react';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
 export default function ModifyPassword() {

@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import SignUpCss from './SignUpCss.css'; 
-import { signup } from '@/app/login/actions';
-import { SubmitButton } from "@/app/login/submit-button";
+import { signup } from '../../app/login/actions';
+import { SubmitButton } from "../../app/login/submit-button";
 
 
 export default function SignUp() {
