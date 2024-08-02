@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '../../utils/supabase/server'
 
+
 export async function login(formData: FormData) {
   const supabase = createClient()
 
@@ -64,10 +65,10 @@ export async function signup(formData: FormData) {
       translatedErrorMessage = "※ユーザーはすでに登録されています。";
     }
 
-    return { error: translatedErrorMessage }
+    return { success : false , error: translatedErrorMessage }
   }
 
-  //유저정보 DB에 업데이트
+  //유저정보 supabase에 업데이트
   const userEmail = data.user?.email;
 
   if (userEmail) {
@@ -78,15 +79,20 @@ export async function signup(formData: FormData) {
 
     if (updateError) {
       console.error("Failed to update userinfo:", updateError);
-      return { error: "※ユーザー情報の更新に失敗しました。" };
+      return { success : false , error: "※ユーザー情報の更新に失敗しました。" };
     }
   }
 
-
-  return { success: true };
-  
+    return { success : true , error : null};
 
 }
+
+export async function redir() {
+  const supabase = createClient()
+
+  redirect('/mailpage')
+}
+
 
 //로그아웃
 export async function signout() {
