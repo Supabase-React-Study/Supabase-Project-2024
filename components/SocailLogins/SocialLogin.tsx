@@ -11,6 +11,9 @@ import GmailButton from '../../components/SocailLogins/imgs/web_light_sq_SU@3x.p
 type OAuthProvider = 'kakao' | 'google';
 export default function SocialLogin() {
 
+  const reURL1="https://supabase-project-2024.vercel.app/auth/callback";
+  const reURL2="http://localhost:3000/auth/callback";
+
   const logInWithOAuth = async (provider: OAuthProvider) => {
     const supabase = createClient(); // Supabase 클라이언트 생성
 
@@ -18,7 +21,7 @@ export default function SocialLogin() {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider,
         options: {
-          redirectTo: "https://supabase-project-2024.vercel.app/auth/callback",
+          redirectTo: reURL1,
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
