@@ -13,7 +13,7 @@ export async function resetPwEmail(email) {
 
   const { data, error } = await supabase.auth
     .resetPasswordForEmail(email, { // email
-      redirectTo: `http://localhost:3000/modifypassword`
+      redirectTo: `/modifypassword`
     })
 
   if (error) {
@@ -21,7 +21,7 @@ export async function resetPwEmail(email) {
   }
 
   // "メールを送りました。確認してください。"　ページに移動
-  redirect(`http://localhost:3000/mailpage`);
+  redirect(`/mailpage`);
 }
 
 export async function updatePassword(newPw) {
@@ -39,6 +39,8 @@ const { data, error } = await supabase.auth
   const { signOutError } = await supabase.auth.signOut();
 
   if (signOutError) console.log("signOutError");
+
+  // redirect(`/login`);
 }
 
 export async function updateUserInfo(newName, newGender, userEmail) {
