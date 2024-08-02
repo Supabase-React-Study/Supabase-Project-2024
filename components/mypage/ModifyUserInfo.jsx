@@ -3,7 +3,7 @@
 
 import MyPageCss from "./MyPageCss.css";
 import { useEffect, useState } from 'react';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
 import { updateUserInfo } from '../../app/modifypassword/action';

@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import SignUpCss from './SignUpCss.css'; 
-import { signup, redir } from '@/app/login/actions';
-import { SubmitButton } from "@/app/login/submit-button";
+import { signup, redir } from '../../app/login/actions';
+import { SubmitButton } from "../../app/login/submit-button";
 import { redirect } from 'next/navigation';
+
 
 
 
