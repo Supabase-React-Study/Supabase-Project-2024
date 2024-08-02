@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '../../utils/supabase/server'
 
-
+//로그인
 export async function login(formData: FormData) {
   const supabase = createClient()
 
@@ -37,6 +37,7 @@ export async function login(formData: FormData) {
 
 }
 
+//회원가입
 export async function signup(formData: FormData) {
   const supabase = createClient()
 
@@ -87,6 +88,7 @@ export async function signup(formData: FormData) {
 
 }
 
+//메일 인증 확인 페이지
 export async function redir() {
   const supabase = createClient()
 
