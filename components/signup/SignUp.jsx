@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import SignUpCss from './SignUpCss.css'; 
 import { signup, redir } from '@/app/login/actions';
 import { SubmitButton } from "@/app/login/submit-button";
-import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from 'next/navigation';
 
 
 
@@ -103,11 +103,13 @@ export default function SignUp() {
             const result = await signup(formData);
             console.log(result);
           
-            // if (result.error == null) {
-            //     // 오류가 발생하면 일반 오류 메시지 설정
-            //     setGeneralError(result.error);
-            // } else {
+            if (result.success == true && result.error == null) {
+               
+                redir(); 
+            } else {
+                 // 오류가 발생하면 일반 오류 메시지 설정
                 setGeneralError(result.error);
+            }
 
         } catch (error) {
             // 서버 오류 발생 시 콘솔에 에러 출력 및 일반 오류 메시지 설정
@@ -115,7 +117,7 @@ export default function SignUp() {
             setGeneralError('※サーバーエラーが発生しました。');
         }
         
-        redir();
+        
     };
 
     return (
