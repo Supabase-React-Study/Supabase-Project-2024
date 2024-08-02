@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from '../components/header/Header';
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+  : "https://supabase-project-2024.vercel.app";
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),

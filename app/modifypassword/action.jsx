@@ -13,7 +13,7 @@ export async function resetPwEmail(email) {
 
   const { data, error } = await supabase.auth
     .resetPasswordForEmail(email, { // email
-      redirectTo: `/modifypassword`
+      redirectTo: '/modifypassword'
     })
 
   if (error) {
