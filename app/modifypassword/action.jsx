@@ -13,7 +13,7 @@ export async function resetPwEmail(email) {
 
   const { data, error } = await supabase.auth
     .resetPasswordForEmail(email, { // email
-      redirectTo: `http://supabase-project-2024.vercel.app/modifypassword`
+      redirectTo: `/modifypassword`
     })
 
   if (error) {
@@ -21,7 +21,7 @@ export async function resetPwEmail(email) {
   }
 
   // "メールを送りました。確認してください。"　ページに移動
-  redirect(`http://supabase-project-2024.vercel.app/mailpage`);
+  redirect(`/mailpage`);
 }
 
 export async function updatePassword(newPw) {
