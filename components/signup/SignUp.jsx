@@ -117,7 +117,6 @@ export default function SignUp() {
             setGeneralError('※サーバーエラーが発生しました。');
         }
         
-        
     };
 
     return (

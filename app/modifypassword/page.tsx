@@ -1,14 +1,14 @@
 'use client';
 import ModifyPasswordJSX from '../../components/mypage/ModifyPassword'
-
 import { useEffect, useState } from 'react';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
+import { User } from '@supabase/supabase-js'; // Import User type
 
 export default function ModifyPassword() {
 
-  const [user, setUser] = useState(null);// auth.user
-  const [userInfo, setUserInfo] = useState(null); // public.userinfo
+  const [user, setUser] = useState<User | null>(null); // Explicitly typing as User or null
+  const [userInfo, setUserInfo] = useState<any>(null); // If you know the exact type of userInfo, replace `any` with that type
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -16,14 +16,14 @@ export default function ModifyPassword() {
 
     const supabase = createClient();
 
-    // 사용자 정보를 가져오는함수
+    // 사용자 정보를 가져오는 함수
     async function fetchUser() {
       const { data: userData, error: userError } = await supabase.auth.getUser();
 
       if (userError || !userData?.user) {
         router.push('/login'); // 로그인 페이지로 리디렉션
       } else {
-        setUser(userData.user);
+        setUser(userData.user); // Now TypeScript understands that user can be a User object
 
         // 추가 정보 가져오기
         const { data: userInfoData, error: userInfoError } = await supabase
@@ -35,7 +35,6 @@ export default function ModifyPassword() {
         if (userInfoError) {
           console.error('Error fetching user info:', userInfoError);
         } else {
-
           console.log('Fetched user info:', userInfoData);
           setUserInfo(userInfoData);
         }

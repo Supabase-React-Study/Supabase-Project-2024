@@ -25,18 +25,16 @@ export default function MyPage({ user, userInfo }) {
       setSelectedGender(''); // Default or no gender selected
     }
 
-    // const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-    //   if (event === 'SIGNED_OUT') {
-    //     router.push('/login');
-    //   } else if (event === 'SIGNED_IN') {
-    //     router.push('/mypage');
-    //   }
-    // });
-
-    // return () => {
-    //   authListener.subscription?.unsubscribe();
-    // };
   }, [router, userInfo?.gender, supabase]);
+
+  const [namePlaceholder, setNamePlaceholder] = useState(userInfo.name)
+  useEffect(() => {
+    if(userInfo.name == null) {
+        setNamePlaceholder('ニックネームがないです。');
+
+        
+    }
+  })
 
   // Check the provider to determine which elements to hide
   const isProviderKakaoOrGoogle = user.app_metadata?.provider === 'kakao' || user.app_metadata?.provider === 'google';
@@ -47,7 +45,7 @@ export default function MyPage({ user, userInfo }) {
         <h2>マイページ</h2>
         <img className="fit-picture" src="https://www.pngall.com/wp-content/uploads/10/Member-Silhouette-Transparent.png" alt="member-default-profile-img" />
       </header>
-      <form className="user-info">
+      <div className="user-info">
         <div className="mail-addr">
           <div>メールアドレス</div>
           <input placeholder={userInfo.email} id="email" value={userInfo.email} readOnly/>
@@ -57,7 +55,7 @@ export default function MyPage({ user, userInfo }) {
           <>
             <div className="nickn">
               <div>ニックネーム</div>
-              <input placeholder={user.user_metadata.user_name} readOnly />
+              <input placeholder={namePlaceholder} style={{color: "#d9d9d9"}} readOnly />
             </div>
 
             <div className="sex">
@@ -70,6 +68,7 @@ export default function MyPage({ user, userInfo }) {
                   value="0" 
                   checked={selectedGender === 'man'} 
                   onChange={() => setSelectedGender('man')} 
+                  disabled
                 />
                 <label htmlFor="man">男</label>
                 <input 
@@ -79,6 +78,7 @@ export default function MyPage({ user, userInfo }) {
                   value="1" 
                   checked={selectedGender === 'woman'} 
                   onChange={() => setSelectedGender('woman')} 
+                  disabled
                 />
                 <label htmlFor="woman">女</label>
                 <input 
@@ -88,6 +88,7 @@ export default function MyPage({ user, userInfo }) {
                   value="2" 
                   checked={selectedGender === 'etc'} 
                   onChange={() => setSelectedGender('etc')} 
+                  disabled
                 />
                 <label htmlFor="etc">その他</label>
               </div>
@@ -100,7 +101,7 @@ export default function MyPage({ user, userInfo }) {
         </div>
         </>
         )}
-      </form>
+      </div>
     </section>
   );
 }

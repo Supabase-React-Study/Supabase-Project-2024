@@ -3,12 +3,12 @@
 import ModifyUserInfoJSX from '../../components/mypage/ModifyUserInfo'
 
 import { useEffect, useState } from 'react';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
-
+import { User } from '@supabase/supabase-js'; // Import User type
 export default function ModifyUserInfo() {
 
-  const [user, setUser] = useState(null);// auth.user
+  const [user, setUser] = useState<User | null>(null); // Explicitly typing as User or null
   const [userInfo, setUserInfo] = useState(null); // public.userinfo
   const [loading, setLoading] = useState(true);
   const router = useRouter();
