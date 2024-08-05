@@ -42,7 +42,7 @@ export default function ModifyPassword({ userInfo }) {
         let valid = true;
 
         if (!isPasswordValid(password)) {
-            setPasswordError('※ パスワードは半角8文字以上、英数字、特殊文字を組み合わせて入力してください。');
+            setPasswordError('※ パスワードは半角8文字以上、英数字、特殊文字を組み合わせて入力してください。    ※!@#$%^&*+-=');
             valid = false;
         }
 
