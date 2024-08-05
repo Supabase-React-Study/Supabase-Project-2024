@@ -36,7 +36,7 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   /*인증된 사용자일 경우 접속가능한 페이지를 마이페이지, 패스워드 변경, 정보수정등으로 제한함 */
-  const allowedPages = ['/mypage', '/modifypassword', '/modifyuserinfo']
+  const allowedPages = ['/mypage', '/modifypassword', '/modifyuserinfo','/mailpage']
   if (user) {
     // 인증된 사용자만 접근할 수 있는 페이지 제한
     if (!allowedPages.includes(request.nextUrl.pathname)) {
