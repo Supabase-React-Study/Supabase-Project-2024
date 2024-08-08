@@ -27,84 +27,87 @@
 
 <br>
 
-## 1. 개발 환경
+## 1. 개발 환경 및 개발 언어
 
-- Front :
+- OS :
+- Front : JavaScript
 - Back-end :
-- 협업 툴 : Discord, Notion, Github Wiki
+- 협업 툴 : Github Desktop
 - 디자인 : [Figma]
+- 배포 :
   <br>
 
 ## 2. 프로젝트 구조
 
-<!--
 ```
-├── README.md
-├── .eslintrc.js
-├── .gitignore
-├── .prettierrc.json
-├── package-lock.json
-├── package.json
-│
-├── public
-│    └── index.html
-└── src
-     ├── App.jsx
-     ├── index.jsx
-     ├── api
-     │     └── mandarinAPI.js
-     ├── asset
-     │     ├── fonts
-     │     ├── css_sprites.png
-     │     ├── logo-404.svg
-     │     └── logo-home.svg
-     │          .
-     │          .
-     │          .
-     ├── atoms
-     │     ├── LoginData.js
-     │     └── LoginState.js
-     ├── common
-     │     ├── alert
-     │     │     ├── Alert.jsx
-     │     │     └── Alert.Style.jsx
-     │     ├── button
-     │     ├── comment
-     │     ├── inputBox
-     │     ├── post
-     │     ├── postModal
-     │     ├── product
-     │     ├── tabMenu
-     │     ├── topBanner
-     │     └── userBanner
-     ├── pages
-     │     ├── addProduct
-     │     │     ├── AddProduct.jsx
-     │     │     └── AddProduct.Style.jsx
-     │     ├── chatList
-     │     ├── chatRoom
-     │     ├── emailLogin
-     │     ├── followerList
-     │     ├── followingList
-     │     ├── home
-     │     ├── join
-     │     ├── page404
-     │     ├── postDetail
-     │     ├── postEdit
-     │     ├── postUpload
-     │     ├── productEdit
-     │     ├── profile
-     │     ├── profileEdit
-     │     ├── profileSetting
-     │     ├── search
-     │     ├── snsLogin
-     │     └── splash
-     ├── routes
-     │     ├── privateRoutes.jsx
-     │     └── privateRoutesRev.jsx
-     └── styles
-           └── Globalstyled.jsx
-``` -->
+Supabase-Project-2024
+├─ app
+│  ├─ auth
+│  │  └─ callback
+│  │     └─ route.ts
+│  ├─ favicon.ico
+│  ├─ globals.css
+│  ├─ layout.tsx
+│  ├─ login
+│  │  ├─ actions.ts
+│  │  ├─ page.tsx
+│  │  └─ submit-button.tsx
+│  ├─ mailpage
+│  │  └─ page.tsx
+│  ├─ modifypassword
+│  │  ├─ action.jsx
+│  │  └─ page.tsx
+│  ├─ modifyuserinfo
+│  │  └─ page.tsx
+│  ├─ mypage
+│  │  └─ page.tsx
+│  ├─ page.tsx
+│  └─ signup
+│     └─ page.tsx
+├─ components
+│  ├─ header
+│  │  ├─ Header.jsx
+│  │  ├─ HeaderCss.css
+│  │  └─ imgs
+│  │     └─ logo.png
+│  ├─ login
+│  │  ├─ Login.jsx
+│  │  └─ LoginCss.css
+│  ├─ mypage
+│  │  ├─ member.png
+│  │  ├─ ModifyPassword.jsx
+│  │  ├─ ModifyPasswordCss.css
+│  │  ├─ ModifyUserInfo.jsx
+│  │  ├─ ModifyUserInfoCss.css
+│  │  ├─ MyPage.jsx
+│  │  ├─ MyPageCss.css
+│  │  └─ MyPage_Gender.jsx
+│  ├─ signup
+│  │  ├─ SignUp.jsx
+│  │  └─ SignUpCss.css
+│  └─ SocailLogins
+│     ├─ imgs
+│     │  ├─ kakao_login_large_narrow.png
+│     │  ├─ kakao_login_large_wide.png
+│     │  ├─ web_light_sq_ctn@3x.png
+│     │  └─ web_light_sq_SU@3x.png
+│     └─ SocialLogin.tsx
+├─ middleware.ts
+├─ next.config.js
+├─ package-lock.json
+├─ package.json
+├─ postcss.config.js
+├─ README.md
+├─ tailwind.config.ts
+├─ tsconfig.json
+└─ utils
+   └─ supabase
+      ├─ client.ts
+      ├─ middleware.ts
+      ├─ server.ts
+      └─ supabase.d.ts
+
+```
 
 <br>
 
@@ -112,28 +115,22 @@
 
 ### 김예슬
 
-- **UI**
-  -
-- **기능**
-  -
+- ## **UI**
+- ## **기능**
 
 <br>
-    
+
 ### 유수빈
 
-- **UI**
-  -
-- **기능**
-  -
+- ## **UI**
+- ## **기능**
 
 <br>
 
 ### 전나경
 
-- **UI**
-  -
-- **기능**
-  -
+- ## **UI**
+- ## **기능**
 
 <br>
 
@@ -160,8 +157,8 @@
 -
 
 | 초기화면 |
-| -------- | ----------------------------------------------------------------------------------------------------------------- | --- |
-| <!--     | ![splash](https://user-images.githubusercontent.com/112460466/210172920-aef402ed-5aef-4d4a-94b9-2b7147fd8389.gif) | --> |
+| -------- |
+|          |
 
 <br>
 
@@ -195,14 +192,14 @@
 
 <br>
 
-### [상단 배너]
+### [헤더]
 
-- 상단 배너 : 각 페이지별로 다른 종류의 버튼을 가지고 있습니다.
-  - 로그아웃 :
+- 상단 헤더 : 로그아웃 상태에서 로고 클릭시 로그인페이지로 이동, 로그인 상태에서 로고 클릭시 마이페이지로 이동
+  - 로그아웃 : 로그인 시 헤더에 로그아웃 버튼 생성, 로그아웃 상태는 버튼 존재X
 
-| 상단 배너 |
-| --------- |
-|           |
+| 헤더 |
+| ---- |
+|      |
 
 <br>
 
@@ -217,3 +214,7 @@
 <br>
 
 <!-- 리드미참조 깃허브 : https://github.com/likelion-project-README/README -->
+
+```
+
+```
