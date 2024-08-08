@@ -1,6 +1,6 @@
 # [2024]SUPABASE login/signup project
 
-![readme_mockup2]
+![login image](https://github.com/user-attachments/assets/b665a4a3-2b4a-4e32-8814-f005a88a3e88)
 
 - 배포 URL : https://supabase-project-2024.vercel.app/login
 - Test ID : test@example.com
@@ -29,12 +29,14 @@
 
 ## 1. 개발 환경 및 개발 언어
 
-- OS :
-- Front : JavaScript
-- Back-end :
-- 협업 툴 : Github Desktop
-- 디자인 : [Figma]
-- 배포 :
+- OS : Window
+- Framework: Next.js 14.2.5
+- Library : React 18.2.0
+- Language : TypeScript, JavaScript, Css
+- DB : SUPABASE
+- Cloud : Vercel
+- Collaboration tool : Slack, Github Desktop, Figma
+
   <br>
 
 ## 2. 프로젝트 구조
@@ -116,21 +118,32 @@ Supabase-Project-2024
 ### 김예슬
 
 - ## **UI**
+- 메일주소 로그인, 메일주소 회원가입, 로그아웃
 - ## **기능**
-
-<br>
+- 메일주소 로그인, 메일주소 회원가입, 로그아웃
+- ## **테스트**
+- 마이페이지 기능 테스트
+  <br>
 
 ### 유수빈
 
 - ## **UI**
+- 소셜 로그인, 소셜 회원가입
 - ## **기능**
+- 소셜 로그인, 소셜 회원가입
+- ## **테스트**
+- 로그인 기능 테스트
 
 <br>
 
 ### 전나경
 
 - ## **UI**
+- 마이페이지, 비밀번호 변경, 유저 정보 변경
 - ## **기능**
+- DB, 마이페이지, 비밀번호 변경, 유저 정보 변경
+- ## **테스트**
+- 회원가입 기능 테스트
 
 <br>
 
@@ -138,9 +151,11 @@ Supabase-Project-2024
 
 ### 개발 기간
 
-- 전체 개발 기간 :
-- UI 구현 :
-- 기능 구현 :
+- 전체 개발 기간 : 2024.07.16 ~ 2024.08.05
+- UI 구현 : 2024.07.22 ~ 2024.07.25
+- 기능 구현 : 2024.07.25 ~ 2024.08.02
+- 테스트 : 2024.08.05 ~ 2024.08.07
+- 배포 : 2024.08.01
 
 <br>
 
