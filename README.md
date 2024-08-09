@@ -142,7 +142,7 @@ Supabase-Project-2024
 
 | 회원가입 |
 | -------- |
-|          |
+|   ![image](https://github.com/user-attachments/assets/92df88cd-00ff-4584-8611-23224276e7c1)    |
 
 <br>
 
