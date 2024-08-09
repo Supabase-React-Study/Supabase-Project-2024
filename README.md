@@ -1,4 +1,7 @@
-# [2024]SUPABASE login/signup project
+<div align="center">
+  <h1>[2024]SUPABASE login/signup project</h1>
+</div>
+
 
 ![login image](https://github.com/user-attachments/assets/b665a4a3-2b4a-4e32-8814-f005a88a3e88)
 
@@ -130,7 +133,7 @@ Supabase-Project-2024
 
 | 초기화면 |
 | -------- |
-|  ![login image](https://github.com/user-attachments/assets/b665a4a3-2b4a-4e32-8814-f005a88a3e88)         |
+|  ![FirstPage image](https://github.com/user-attachments/assets/c80bed3f-c5cb-43ed-bead-95bd8bcf42e8) |
 
 <br>
 
@@ -141,11 +144,12 @@ Supabase-Project-2024
 
 | 헤더 |
 | ---- |
-|      |
+| ![Header image](https://github.com/user-attachments/assets/0814b146-491b-4079-94ea-004ec6b06830)  |
+| ![Header logout button image](https://github.com/user-attachments/assets/a3810971-4d48-4252-bb51-84a922dfb6a9)  |
 
 <br>
 
-### [회원가입]
+### [소셜 회원가입 / 메일 회원가입]
 
 - 메일주소, 비밀번호, 비밀번호확인, 닉네임, 성별, 개인정보 동의를 포함한 회원가입 가능 페이지.
 - 사용자가 회원가입을 시도할 때 Supabase를 사용하여 새 사용자 등록 후, 사용자 정보를 데이터베이스에 업데이트하는 기능을 수행.
@@ -154,18 +158,18 @@ Supabase-Project-2024
 
 | 회원가입 |
 | -------- |
-|   ![image](https://github.com/user-attachments/assets/92df88cd-00ff-4584-8611-23224276e7c1)    |
+|  ![SignUp image](https://github.com/user-attachments/assets/f0ad5787-0eca-429f-8a2a-377c92af926e)  |
 
 <br>
 
-### [로그인]
+### [소셜 로그인 / 메일 로그인]
 
 - 사용자가 이메일과 비밀번호를 이용하여 인증을 시도하는 페이지. 
 - Supabase의 인증 시스템을 사용하여 로그인을 처리하며, 로그인 과정에서 발생할 수 있는 다양한 오류를 처리.
 
 | 로그인 |
 | ------ |
-|        |
+|  ![Login image](https://github.com/user-attachments/assets/c80bed3f-c5cb-43ed-bead-95bd8bcf42e8)       |
 
 <br>
 
@@ -175,19 +179,10 @@ Supabase-Project-2024
 
 | 로그아웃 |
 | -------- |
-|          |
+|  ![Logout Button image](https://github.com/user-attachments/assets/363dad9a-5979-4c5b-b52d-606e28565f84) |
 
 <br>
 
-### [소셜 회원가입]
-
-- 
-
-| 소셜회원가입 |
-| ---- |
-|      |
-
-<br>
 
 ### [마이페이지]
 
@@ -198,7 +193,7 @@ Supabase-Project-2024
 
 | 마이페이지 |
 | ---------- |
-|            |
+|   ![Mypage image](https://github.com/user-attachments/assets/0a13b3f2-5084-4b80-9ed5-e40c317eabfc)  |
 
 <br>
 
