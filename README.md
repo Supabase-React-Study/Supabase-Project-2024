@@ -117,11 +117,7 @@ Supabase-Project-2024
 
 ```
 
-<br>
 
-### 작업 관리
-
--
 
 <br>
 
